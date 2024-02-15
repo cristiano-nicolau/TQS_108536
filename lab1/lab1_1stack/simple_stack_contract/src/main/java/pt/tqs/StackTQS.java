@@ -23,6 +23,9 @@ public class StackTQS<T>
 
     public void push(T item) {
         stack.addFirst(item);
+        if (bound != null && stack.size() > bound) {
+            throw new IllegalStateException();
+        }
     }
 
     public T pop() {
