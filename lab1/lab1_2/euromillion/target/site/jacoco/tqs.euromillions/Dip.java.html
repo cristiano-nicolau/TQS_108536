@@ -71,7 +71,7 @@ public class Dip {
 <span class="fc" id="L71">        }</span>
 <span class="fc bfc" id="L72" title="All 2 branches covered.">        for (int i = 0; i &lt; STARS_REQUIRED; ) {</span>
 <span class="fc" id="L73">            int candidate = generator.nextInt(STARS_RANGE_MAX) + 1;</span>
-<span class="fc bfc" id="L74" title="All 2 branches covered.">            if (!randomDip.getStarsColl().contains(candidate)) {</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">            if (!randomDip.getStarsColl().contains(candidate)) {</span>
 <span class="fc" id="L75">                randomDip.getStarsColl().add(candidate);</span>
 <span class="fc" id="L76">                i++;</span>
             }
