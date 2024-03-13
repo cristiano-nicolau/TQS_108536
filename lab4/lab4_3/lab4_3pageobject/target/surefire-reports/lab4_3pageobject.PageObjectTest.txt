@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: lab4_3pageobject.PageObjectTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.934 s - in lab4_3pageobject.PageObjectTest
