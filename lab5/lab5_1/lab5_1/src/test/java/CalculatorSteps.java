@@ -15,35 +15,49 @@ public class CalculatorSteps {
         calc = new Calculator();
     }
 
-    @When("^I add (\\d+) and (\\d+)$")
+    @When("I add {int} and {int}")
     public void add(int arg1, int arg2) {
         calc.push(arg1);
         calc.push(arg2);
         calc.push("+");
     }
 
-    @When("^I substract (\\d+) to (\\d+)$")
+    @When("I add floats {float} and {float}")
+    public void addFloats(float arg1, float arg2) {
+        calc.push(arg1);
+        calc.push(arg2);
+        calc.push("+");
+    }
+
+    @When("I substract {int} to {int}")
     public void substract(int arg1, int arg2) {
         calc.push(arg1);
         calc.push(arg2);
         calc.push("-");
     }
 
-    @When("^I multiply (\\d+) to (\\d+)$")
+    @When("I multiply {int} to {int}")
     public void multiply(int arg1, int arg2){
         calc.push(arg1);
         calc.push(arg2);
         calc.push("*");
     }
 
-    @When("^I divide (\\d+) to (\\d+)$")
+    @When("I divide {int} to {int}")
     public void divide(int arg1, int arg2){
         calc.push(arg1);
         calc.push(arg2);
         calc.push("/");
     }
 
-    @Then("^the result is (\\d+)$")
+    @When("I square {int}")
+    public void square(int arg1){
+        calc.push(arg1);
+        calc.push(arg1);
+        calc.push("*");
+    }
+
+    @Then("the result is {int}")
     public void the_result_is(double expected) {
         Number value = calc.value();
         assertEquals(expected, value);

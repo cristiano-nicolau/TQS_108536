@@ -6,6 +6,10 @@ Feature: Basic Arithmetic
   Scenario: Addition
     When I add 4 and 5
     Then the result is 9
+  
+  Scenario: Addition
+    When I add floats 4.7 and 5.3
+    Then the result is 10
 
   Scenario: Substraction
     When I substract 7 to 2 
@@ -18,6 +22,10 @@ Feature: Basic Arithmetic
   Scenario: Divide
     When I divide 10 to 2
     Then the result is 5
+
+  Scenario: Square
+    When I square 5
+    Then the result is 25
 
   Scenario Outline: Several additions
     When I add <a> and <b>
