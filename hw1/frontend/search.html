@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bus Tickts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="bgimg w3-display-container w3-animate-opacity ">
+        <div class="overlay"></div>
+        <div class="w3-xlarge w3-animate-top">
+            <h3 class="w3-display-topleft w3-padding-large"><strong>TravelEase</strong></h3>
+            <h3 class="w3-display-topright w3-padding-large"><strong>Travel with comfort and safety</strong></h3>
+        </div>
+
+
+        <div class="w3-display-middle">
+            <div class="w3-animate-bottom w3-padding-small w3-container" style="width:100%">
+                <div class="w3-bar w3-black w3-center">
+                    <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'One Way');">One Way</button>
+                    <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Round Trip');">Round
+                        Trip</button>
+                </div>
+
+                <!-- One Way -->
+                <div id="One Way" class="w3-container w3-white myLink">
+                    <div class="w3-row-padding" style="margin:16px -16px;">
+                        <div class="w3-half">
+                            <label>From</label>
+                            <select class="w3-select" name="From" disabled>
+                                <option value="" disabled selected>Select your origin </option>
+
+                            </select>
+                        </div>
+                        <div class="w3-half">
+                            <label>To</label>
+                            <select class="w3-select" name="To" disabled>
+                                <option value="" disabled selected>Select your Destination</option>
+                            </select>
+                        </div>
+                        <div class="w3-half" style="margin-top:16px;">
+                            <label>Departure</label>
+                            <input class="w3-input w3-border" type="date" placeholder="Departure" id="data-partida" disabled>
+
+                        </div>
+                        <div class="w3-half" style="margin-top:16px;">
+                            <label> Passengers</label>
+                        </div>
+                        <div class="w3-dropdown-click w3-row-padding" style="width: 200px !important;" >
+                            <button onclick="togglePassengerDropdown('OneWay')" class="w3-button  w3-border"
+                                style="width: 200px !important;" id="passengersOneWay" disabled>1 Adult</button>
+                            <div id="passengerDropdownOneWay" class="w3-dropdown-content w3-bar-block w3-border"
+                                style="width: 300px !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Round Trip -->
+                <div id="Round Trip" class="w3-container w3-white myLink">
+                    <div class="w3-row-padding" style="margin:16px -16px;">
+                        <div class="w3-half">
+                            <label>From</label>
+                            <select class="w3-select" name="From" disabled>
+                                <option value="" disabled selected>Select your origin </option>
+
+                            </select>
+                        </div>
+                        <div class="w3-half">
+                            <label>To</label>
+                            <select class="w3-select" name="To" disabled>
+                                <option value="" disabled selected>Select your Destination</option>
+
+                            </select>
+                        </div>
+                        <div class="w3-third" style="margin-top:16px;">
+                            <label>Departure</label>
+                            <input class="w3-input w3-border" type="date" placeholder="Departure" id="data-partida" disabled>
+
+                        </div>
+                        <div class="w3-third" style="margin-top:16px;">
+                            <label>Return</label>
+                            <input class="w3-input w3-border" type="date" placeholder="Return" id="data-partida" disabled>
+
+                        </div>
+                        <div class="w3-third" style="margin-top:16px;">
+                            <label> Passengers</label>
+                        </div>
+                        <div class="w3-dropdown-click w3-row-padding" style="width: 200px !important;">
+                            <button onclick="togglePassengerDropdown('RoundTrip')" class="w3-button  w3-border"
+                                style="width: 200px !important;" id="passengersRoundTrip" disabled>1 Adult</button>
+                            <div id="passengerDropdownRoundTrip" class="w3-dropdown-content w3-bar-block w3-border"
+                                style="width: 300px !important;">
+                            </div>
+                        </div>
+
+
+                    </div>
+  
+                </div>
+                <hr class="w3-border-white w3-animate-right" style="margin-left: 20%;width:60%">
+                <!-- display the horarios -->
+                <div class="w3-row-padding w3-center" style="margin:20px;">
+                    <h3 class="w3-center">Available schedules</h3>
+                    <div class="w3-row-padding w3-center" style="margin:20px;">
+                        <div class="w3-third">
+                            <div class="w3-card-4">
+                                <header class="w3-container w3-blue">
+                                    <h1>Company 1</h1>
+                                </header>
+
+                                <div class="w3-container">
+                                    <p>Departure: 08:00</p>
+                                    <p>Arrival: 12:00</p>
+                                    <p>Price: $ 100.00</p>
+                                </div>
+
+                                <footer class="w3-container w3-blue">
+                                    <h5>Buy</h5>
+                                </footer>
+                            </div>
+                        </div>
+                        <div class="w3-third">
+                            <div class="w3-card-4">
+                                <header class="w3-container w3-blue">
+                                    <h1>Company 2</h1>
+                                </header>
+
+                                <div class="w3-container">
+                                    <p>Departure: 08:00</p>
+                                    <p>Arrival: 12:00</p>
+                                    <p>Price: $ 100.00</p>
+                                </div>
+
+                                <footer class="w3-container w3-blue">
+                                    <h5>Buy</h5>
+                                </footer>
+                            </div>
+                        </div>
+                        <div class="w3-third">
+                            <div class="w3-card-4">
+                                <header class="w3-container w3-blue">
+                                    <h1>Company 3</h1>
+                                </header>
+
+                                <div class="w3-container">
+                                    <p>Departure: 08:00</p>
+                                    <p>Arrival: 12:00</p>
+                                    <p>Price: $ 100.00</p>
+                                </div>
+
+                                <footer class="w3-container w3-blue">
+                                    <h5>Buy</h5>
+                                </footer>
+                            </div>
+                    </div>
+
+                    </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="w3-display-bottommiddle w3-padding-large">
+        Powered by <a href="https://cristiano-nicolau.github.io" target="_blank">Cristiano Nicolau</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

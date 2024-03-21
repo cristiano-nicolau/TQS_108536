@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Selected Journey Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bgimg w3-display-container w3-animate-opacity ">
+        <div class="overlay"></div>
+        <div class="w3-xlarge w3-animate-top">
+            <h3 class="w3-display-topleft w3-padding-large"><strong>TravelEase</strong></h3>
+            <h3 class="w3-display-topright w3-padding-large"><strong>Travel with comfort and safety</strong></h3>
+        </div>
+
+        <div class="w3-display-middle">
+            <div class="w3-row-padding overlay2" style="width: 100%;">
+                <!-- Coluna para exibir informações da viagem -->
+                <div class="w3-half w3-animate-bottom w3-padding-small" style="color: white;">
+                    <h2 class="w3-center">Selected Journey Details</h2>
+                    <div class="w3-container">
+                        <p>From: <span id="from"></span></p>
+                        <p>To: <span id="to"></span></p>
+                        <p>Departure Date: <span id="departureDate"></span></p>
+                        <p>Number of Passengers: <span id="numPassengers"></span></p>
+                    </div>
+                </div>
+
+                <!-- Coluna para o formulário de dados pessoais -->
+                <div class="w3-half w3-animate-bottom w3-padding-small" style="color: white;">
+                    <h2 class="w3-center">Enter Personal Details</h2>
+                    <form class="w3-container" action="submit_details.php" method="POST">
+                        <label class="w3-text-white">Name</label>
+                        <input class="w3-input w3-border" type="text" name="name">
+
+                        <label class="w3-text-white">Email</label>
+                        <input class="w3-input w3-border" type="email" name="email">
+
+                        <label class="w3-text-white">Phone</label>
+                        <input class="w3-input w3-border" type="tel" name="phone">
+
+                        <label class="w3-text-white">Address</label>
+                        <input class="w3-input w3-border" type="text" name="address">
+
+                        <label class="w3-text-white">City</label>
+                        <input class="w3-input w3-border" type="text" name="city">
+
+                        <label class="w3-text-white">Zip Code</label>
+                        <input class="w3-input w3-border" type="text" name="zip">
+
+                        <label class="w3-text-white">Card Type</label>
+                        <select class="w3-select" name="cardType">
+                            <option value="visa">Visa</option>
+                            <option value="mastercard">Mastercard</option>
+                            <option value="amex">American Express</option>
+                        </select>
+
+                        <label class="w3-text-white">Card Number</label>
+                        <input class="w3-input w3-border" type="text" name="cardNumber">
+
+                        <label class="w3-text-white">Card Expiry Date</label>
+                        <input class="w3-input w3-border" type="date" name="cardExpiryDate">
+
+                        <label class="w3-text-white">Card CVV</label>
+                        <input class="w3-input w3-border" type="text" name="cardCVV">
+
+                        <label class="w3-text-white">Card Name</label>
+                        <input class="w3-input w3-border" type="text" name="cardName">
+
+                       
+                    </form>
+                </div>
+                <div class="w3-row-padding w3-center" style="margin:20px;">
+                    <button class="w3-button w3-round-xlarge w3-yellow w3-margin-top w3-animate-bottom" type="submit">Submit</button>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="w3-display-bottommiddle w3-padding-large">
+            Powered by <a href="https://cristiano-nicolau.github.io" target="_blank">Cristiano Nicolau</a>
+        </div>
+    </div>
+</body>
+
+</html>
