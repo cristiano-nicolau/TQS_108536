@@ -16,12 +16,27 @@ function openLink(evt, linkName) {
   document.getElementsByClassName("tablink")[0].click();
 
 
+  function handleCurrencyChange(tripType) {
+    var currencySelect = document.getElementById('arrivalOneWay');
+    var selectedCurrency = currencySelect.value;
+    
+    // Faça algo com a moeda selecionada, se necessário
+}
+
+
   // dropdown page initial
 
   var passengers = {
-    adult: 1,
-    child: 0
+    OneWay: {
+        adult: 1,
+        child: 0
+    },
+    RoundTrip: {
+        adult: 1,
+        child: 0
+    }
 };
+
 
 function togglePassengerDropdown(section) {
   var dropdownId = "passengerDropdown" + section;
@@ -33,42 +48,42 @@ function togglePassengerDropdown(section) {
   }
 }
 
-
-function addPassenger(type) {
+function addPassenger(type, section) {
     if (type === 'adult') {
-        passengers.adult++;
+        passengers[section].adult++;
     } else if (type === 'child') {
-        passengers.child++;
+        passengers[section].child++;
     }
     
-    updatePassengerCount();
+    updatePassengerCount(section);
 }
 
-function removePassenger(type) {
+function removePassenger(type, section) {
     if (type === 'adult') {
-        if (passengers.adult > 1) {
-            passengers.adult--;
+        if (passengers[section].adult > 1) {
+            passengers[section].adult--;
         }
     } else if (type === 'child') {
-        if (passengers.child > 0) {
-            passengers.child--;
+        if (passengers[section].child > 0) {
+            passengers[section].child--;
         }
     }
     
-    updatePassengerCount();
+    updatePassengerCount(section);
+}
+function updatePassengerCount(section) {
+    var adultCountElement = document.getElementById("adultCount" + section);
+    var childCountElement = document.getElementById("childCount" + section);
+
+    adultCountElement.textContent = passengers[section].adult;
+    childCountElement.textContent = passengers[section].child;
+
+    updatePassengerButton(section);
 }
 
-function updatePassengerCount() {
-    var adultCountElement = document.getElementById("adultCount");
-    var childCountElement = document.getElementById("childCount");
 
-    adultCountElement.textContent = passengers.adult;
-    childCountElement.textContent = passengers.child;
-
-    updatePassengerButton();
-}
-
-function updatePassengerButton() {
-    var button = document.getElementById("passengers");
-    button.innerHTML = passengers.adult + " Adult" + (passengers.adult > 1 ? "s" : "") + (passengers.child >= 1 ? ", " + passengers.child + " Children" + (passengers.child > 1 ? "s" : "") : "");
+function updatePassengerButton(section) {
+    var buttonId = "passengers" + section;
+    var button = document.getElementById(buttonId);
+    button.innerHTML = passengers[section].adult + " Adult" + (passengers[section].adult > 1 ? "s" : "") + (passengers[section].child >= 1 ? ", " + passengers[section].child + " Children" + (passengers[section].child > 1 ? "s" : "") : "");
 }

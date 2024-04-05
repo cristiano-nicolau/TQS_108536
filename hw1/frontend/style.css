@@ -33,6 +33,12 @@ h3 {
   font-size: 1.5rem;
 }
 
+h4 {
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+
 /* Estilos para a imagem de fundo */
 .bgimg {
     position: relative;
@@ -51,7 +57,12 @@ h3 {
     background-color: rgba(0, 0, 0, 0.6); 
 }
 .overlay2 {
-  background-color: rgba(0, 0, 0, 0.7); 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75); 
 }
 
 .plane {
@@ -96,6 +107,16 @@ ol {
 .row {
   
 }
+
+.sts{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:center;
+
+}
+
+
 .seats {
   display: flex;
   flex-direction: row;
@@ -110,6 +131,9 @@ ol {
 }
 .seat:nth-child(2) {
   margin-right: 20%;
+}
+.sts .seat:nth-child(2) {
+  margin-right: 0% !important;
 }
 .row--13 .seat:nth-child(2) {
   margin-right: 0% !important;
@@ -236,4 +260,13 @@ ol {
 .rubberBand {
   -webkit-animation-name: rubberBand;
   animation-name: rubberBand;
+}
+
+#yourtickets {
+  cursor: pointer;
+}
+
+#yourtickets:hover {
+  color: #cccccc;
+  text-decoration: underline;
 }

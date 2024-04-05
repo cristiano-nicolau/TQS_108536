@@ -12,23 +12,22 @@
 <body>
 
     <div class="bgimg w3-display-container w3-animate-opacity ">
-        <div class="overlay"></div>
+        <div class="overlay2"></div>
         <div class="w3-xlarge w3-animate-top">
-            <h3 class="w3-display-topleft w3-padding-large"><strong>TravelEase</strong></h3>
-            <h3 class="w3-display-topright w3-padding-large"><strong>Travel with comfort and safety</strong></h3>
+            <h3 class="w3-display-topleft w3-padding-large" id="yourtickets"><a style="text-decoration:none"
+                href="index.html"><strong>TravelEase</strong></a></h3>
+        <h3 class="w3-display-topright w3-padding-large"><strong>Travel with comfort and safety</strong></h3>
         </div>
 
-        <div class="w3-display-middle">
-            <div class="w3-row-padding overlay2" style="width: 100%;">
+        <div class="w3-display-middle" style="width: 75%;">
+            <div class="w3-row-padding" >
                 <!-- Coluna para exibir informações da viagem -->
-                <div class="w3-half w3-animate-bottom w3-padding-small" style="color: white;">
+                <div class="w3-half w3-animate-bottom w3-padding-large" style="color: white;">
                     <h2 class="w3-center">Selected Journey Details</h2>
-                    <div class="w3-container">
-                        <p>From: <span id="from"></span></p>
-                        <p>To: <span id="to"></span></p>
-                        <p>Departure Date: <span id="departureDate"></span></p>
-                        <p>Number of Passengers: <span id="numPassengers"></span></p>
+                    <div class="w3-container w3-padding-small" id="tripDetailsContainer">
+                        
                     </div>
+                    
                 </div>
 
                 <!-- Coluna para o formulário de dados pessoais -->
@@ -86,6 +85,115 @@
             Powered by <a href="https://cristiano-nicolau.github.io" target="_blank">Cristiano Nicolau</a>
         </div>
     </div>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    var tripAway = JSON.parse(localStorage.getItem('tripAway'));
+    console.log(tripAway);
+    var tripBack = (localStorage.getItem('tripBack'));
+
+    var tripDetailsContainer = document.getElementById('tripDetailsContainer');
+
+    if (tripBack) {
+        tripBack = JSON.parse(tripBack);
+        // Se ambas as viagens estiverem disponíveis, exiba-as em contêineres separados
+        var tripAwayDetails = createTripDetailsElement(tripAway, 'Away');
+        var tripBackDetails = createTripDetailsElement(tripBack, 'Back');
+
+        tripDetailsContainer.appendChild(tripAwayDetails);
+        tripDetailsContainer.appendChild(tripBackDetails);
+    } else {
+        // Se apenas a viagem de ida estiver disponível, exiba-a em um único contêiner
+        var tripDetails = createTripDetailsElement(tripAway, 'Away');
+        tripDetailsContainer.appendChild(tripDetails);
+    }
+
+    //no fim colcoa o valor do total a pagar
+    var tripDetails = document.createElement('div');
+    tripDetails.className = 'w3-container w3-padding-small';
+    
+    var total = document.createElement('p');
+    total.innerHTML = '<strong> Total to Pay:</strong> <span id="totalToPay">' + getTotalToPay() + '</span>';
+    
+    tripDetails.appendChild(total);
+    tripDetailsContainer.appendChild(tripDetails);
+
+    function getTotalToPay() {
+        var total = tripAway.price;
+        if (tripBack) {
+            total += tripBack.price;
+        }
+        return total.toFixed(2);
+    }
+
+    function createTripDetailsElement(trip, prefix) {
+
+        var tripDetails = document.createElement('div');
+        tripDetails.className = 'w3-container w3-padding-small';
+
+        var tripNumber = document.createElement('p');
+        tripNumber.innerHTML = '<strong>Trip Number:</strong> <span id="' + prefix + 'id">' + trip.id + '</span>';
+        tripDetails.appendChild(tripNumber);
+
+        var from = document.createElement('p');
+        from.innerHTML = '<strong>From:</strong> <span id="' + prefix + 'from">' + trip.origin + '</span>';
+        tripDetails.appendChild(from);
+
+        var to = document.createElement('p');
+        to.innerHTML = '<strong>To:</strong> <span id="' + prefix + 'to">' + trip.destination + '</span>';
+        tripDetails.appendChild(to);
+
+        var departureDate = document.createElement('p');
+        departureDate.innerHTML = '<strong>Departure Date:</strong> <span id="' + prefix + 'departureDate">' + trip.departureDate + '</span>';
+        tripDetails.appendChild(departureDate);
+
+        var departureTime = document.createElement('p');
+        departureTime.innerHTML = '<strong>Departure Time:</strong> <span id="' + prefix + 'departureTime">' + trip.departureTime + '</span>';
+        tripDetails.appendChild(departureTime);
+
+        var arrivalTime = document.createElement('p');
+        arrivalTime.innerHTML = '<strong>Arrival Time:</strong> <span id="' + prefix + 'arrivalTime">' + trip.arrivalTime + '</span>';
+        tripDetails.appendChild(arrivalTime);
+
+        var price = document.createElement('p');
+        price.innerHTML = '<strong>Price:</strong> <span id="' + prefix + 'price">' + trip.price + '</span>';
+        tripDetails.appendChild(price);
+
+        var numPassengers = document.createElement('p');
+        numPassengers.innerHTML = '<strong>Number of Passengers:</strong><br> <span id="' + prefix + 'numPassengers">' + getNumPassengersString(trip) + '</span>';
+        tripDetails.appendChild(numPassengers);
+
+        var selectedSeats = document.createElement('p');
+        selectedSeats.innerHTML = '<strong>Selected Seat:</strong><br><ol id="' + prefix + 'selectedSeatsList">' + getSelectedSeatsList(trip) + '</ol>';
+        tripDetails.appendChild(selectedSeats);
+
+        var space = document.createElement('br');
+        tripDetails.appendChild(space);
+
+        return tripDetails;
+    }
+
+    function getNumPassengersString(trip) {
+        var adults = trip.passengers.adult;
+        var children = trip.passengers.child;
+        var numPassengersString = 'Adults: ' + adults;
+        if (children > 0) {
+            numPassengersString += ' Children: ' + children;
+        }
+        return numPassengersString;
+    }
+    function getSelectedSeatsList(trip) {
+    var occupiedSeats = trip.occupiedSeats.map(function(seat) {
+        return seat.seatNumber;
+    });
+    occupiedSeats.sort(); // Sort the occupied seats in ascending order
+    return occupiedSeats.join(', '); // Join the occupied seats with a comma
+}
+
+});
+
+
+            
+    </script>
 </body>
 
 </html>
