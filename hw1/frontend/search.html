@@ -163,9 +163,14 @@
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
+
+                        if (!data) {
+                            console.error('No ticket found with ID:', ticketId);
+                            return;
+                        }
                         // Verificar se existem bilhetes disponíveis
-                        if (data.length === 0) {
-                            console.log('No tickets available');
+                        if (data.occupiedSeats.length == 50) {
+                            alert('No seats available for this trip');
                             return;
                         }
 

@@ -24,8 +24,8 @@ public class Trip {
     private LocalDate departureDate;
     private LocalTime departureTime;
     private LocalTime arrivalTime;
-    private double price;
-    private int seats;
+    private Double price;
+    private Integer seats;
     private List<String> occupiedSeats;
 
     public Trip(String origin, String destination, LocalDate departureDate, LocalTime departureTime, LocalTime arrivalTime, double price, int seats) {

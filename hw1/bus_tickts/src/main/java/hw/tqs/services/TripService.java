@@ -34,8 +34,9 @@ public class TripService {
         return tripRepository.findByOriginAndDestinationAndDepartureDate(origin, destination, departureDate);
     }
 
-    //save a trip
     public Trip saveTrip(Trip trip) {
         return tripRepository.save(trip);
     }
+
+    
 }

@@ -16,6 +16,7 @@ public class ExchangeRateService {
 
     String url = "https://api.exchangeratesapi.io/latest";
 
+    // https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_fl0HmrwcSrZVVUYsQP0sIGIZYpI6WJGuaF7nqCHt&currencies=EUR%2CUSD%2CCAD
     String baseCurrency = "USD";
 
     String api_key = "fca_live_fl0HmrwcSrZVVUYsQP0sIGIZYpI6WJGuaF7nqCHt";
@@ -23,6 +24,8 @@ public class ExchangeRateService {
     public ExchangeRateService(HttpClient httpClient) {
         this.httpClient = httpClient;
     }
+
+    
 
 
 
