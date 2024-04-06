@@ -319,10 +319,14 @@
 
         }
 
+        // guarda na local storage a moeda e o seu valor currente ou seja {moeda:valor}, que quero que seja de inicio o USD, 1
+        localStorage.removeItem('currency');
         localStorage.removeItem('requestData');
         localStorage.removeItem('tripAway');
         localStorage.removeItem('tripBack');
         localStorage.removeItem('OtherTrip');
+        localStorage.setItem('currency', JSON.stringify({ 'USD': 1 }));     
+
     </script>
 </body>
 

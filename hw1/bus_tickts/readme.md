@@ -10,4 +10,7 @@ docker run --name mysql5 -e MYSQL_ROOT_PASSWORD=secret1 -e MYSQL_DATABASE=bus_ti
 * MYSQL_PASSWORD=secret2 - user password
 * -p 33060:3306 - port mapping
 
+```bash
+docker exec -it mysql5 mysql -u root -p
+```
 

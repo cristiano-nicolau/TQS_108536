@@ -17,6 +17,7 @@ public class CachingConfig {
     @Bean
     public CacheManager cacheManager() {
         logger.info("Creating cache manager");
-        return new ConcurrentMapCacheManager("CurrencyConversionCache");
+        return new ConcurrentMapCacheManager("exchangeRates");
     }
 }
+

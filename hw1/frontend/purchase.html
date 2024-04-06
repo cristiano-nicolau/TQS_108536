@@ -140,16 +140,17 @@
         tripDetails.appendChild(departureDate);
 
         var departureTime = document.createElement('p');
-        departureTime.innerHTML = '<strong>Departure Time:</strong> <span id="' + prefix + 'departureTime">' + trip.departureTime + '</span>';
+        departureTime.innerHTML = '<strong>Departure Time:</strong> <span id="' + prefix + 'departureTime">' + trip.departureTime.split(':').slice(0, 2).join(':') + '</span>';
         tripDetails.appendChild(departureTime);
 
         var arrivalTime = document.createElement('p');
-        arrivalTime.innerHTML = '<strong>Arrival Time:</strong> <span id="' + prefix + 'arrivalTime">' + trip.arrivalTime + '</span>';
+        arrivalTime.innerHTML = '<strong>Arrival Time:</strong> <span id="' + prefix + 'arrivalTime">' + trip.arrivalTime.split(':').slice(0, 2).join(':') + '</span>';
         tripDetails.appendChild(arrivalTime);
 
         var price = document.createElement('p');
         price.innerHTML = '<strong>Price:</strong> <span id="' + prefix + 'price">' + trip.price + '</span>';
         tripDetails.appendChild(price);
+        
 
         var numPassengers = document.createElement('p');
         numPassengers.innerHTML = '<strong>Number of Passengers:</strong><br> <span id="' + prefix + 'numPassengers">' + getNumPassengersString(trip) + '</span>';

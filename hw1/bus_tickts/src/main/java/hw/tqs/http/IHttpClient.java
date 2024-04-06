@@ -7,6 +7,6 @@ import org.json.simple.parser.ParseException;
 
 
 public interface IHttpClient {
-    public String doHttpGet(String url, Map<String, Object> headers) throws IOException, ParseException;
+    public String doHttpGet(String url) throws IOException, ParseException;
 }
 

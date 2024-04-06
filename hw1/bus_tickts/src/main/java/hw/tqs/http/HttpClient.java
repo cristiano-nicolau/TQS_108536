@@ -1,6 +1,5 @@
 package hw.tqs.http;
 
-
 import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Level;
@@ -20,15 +19,11 @@ public class HttpClient implements IHttpClient {
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Override
-    public String doHttpGet(String url, Map<String, Object> headers) throws IOException, ParseException {
+    public String doHttpGet(String url) throws IOException, ParseException {
         try (CloseableHttpClient client = HttpClients.createDefault()) {
             HttpGet request = new HttpGet(url);
     
             logger.log(Level.INFO, "[ HTTP ] GET {0} ", url);
-    
-            for (Map.Entry<String, Object> entry : headers.entrySet()) {
-                request.setHeader(entry.getKey(), entry.getValue().toString());
-            }
     
             try (CloseableHttpResponse response = client.execute(request)) {
                 HttpEntity entity = response.getEntity();

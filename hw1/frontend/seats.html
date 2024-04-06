@@ -453,8 +453,8 @@
                 from.innerHTML = tripAway.origin;
                 to.innerHTML = tripAway.destination;
                 departureDate.innerHTML = tripAway.departureDate;
-                departureTime.innerHTML = tripAway.departureTime;
-                arrivalTime.innerHTML = tripAway.arrivalTime;
+                departureTime.innerHTML = tripAway.departureTime.split(':').slice(0, 2).join(':');
+                arrivalTime.innerHTML = tripAway.arrivalTime.split(':').slice(0, 2).join(':');
                 numPassengers.innerHTML = `Adults: ${adults}`;
                 if (children > 0) {
                     numPassengers.innerHTML += ` Children: ${children}`;
@@ -463,8 +463,13 @@
 
                 var seatNumbers = tripAway.occupiedSeats;
                 var occupiedSeats = seatNumbers.map(function (seat) {
-                    return seat.substring(1);
-                });
+    // Remove o primeiro caractere (letra)
+    var seatNumber = seat.substring(1);
+    // Se o comprimento do número do assento for menor que 2, preencha com zero à esquerda
+    return seatNumber.padStart(2, '0');
+});
+
+                console.log(occupiedSeats);
                 var seats = document.querySelectorAll('input[type="checkbox"]');
                 seats.forEach(seat => {
                     if (occupiedSeats.includes(seat.id)) {
@@ -480,8 +485,8 @@
                 from.innerHTML = tripBack.origin;
                 to.innerHTML = tripBack.destination;
                 departureDate.innerHTML = tripBack.departureDate;
-                departureTime.innerHTML = tripBack.departureTime;
-                arrivalTime.innerHTML = tripBack.arrivalTime;
+                departureTime.innerHTML = tripBack.departureTime.split(':').slice(0, 2).join(':');
+                arrivalTime.innerHTML = tripBack.arrivalTime.split(':').slice(0, 2).join(':');
                 numPassengers.innerHTML = `Adults: ${adults}`;
                 if (children > 0) {
                     numPassengers.innerHTML += ` Children: ${children}`;

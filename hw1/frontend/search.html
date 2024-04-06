@@ -66,7 +66,7 @@
                             <label>Choose Payment Currency</label>
                             <select class="w3-select" name="PaymentCurrency" id="CurrencyOneWay"
                                 onchange="handleCurrencyChange('OneWay')">
-                                <option value="USD" selected>US Dollar (USD)</option>
+                                <option value="USD">US Dollar (USD)</option>
                                 <option value="EUR">Euro (EUR)</option>
                                 <option value="GBP">British Pound (GBP)</option>
                                 <option value="JPY">Japanese Yen (JPY)</option>
@@ -100,7 +100,12 @@
 
         <script src="script.js"></script>
         <script>
-            var currentCoin = 'USD';
+            // Obter a moeda atual da localStorage mas ela esta guardada assim         localStorage.setItem('currency', JSON.stringify({ 'USD': 1 }));     
+            var currency = JSON.parse(localStorage.getItem('currency'));
+            var currentCoin = Object.keys(currency)[0];
+            
+            
+
             // Extrair os parâmetros da URL
             function getSearchParams() {
                 var searchParams = new URLSearchParams(window.location.search);
@@ -108,6 +113,8 @@
                 var destination = searchParams.get('arrival');
                 var departureDate = searchParams.get('departureDate');
                 var returnDate = searchParams.get('returnDate');
+
+                
 
                 // Verificar se todos os parâmetros necessários estão presentes
                 if (!origin || !destination || !departureDate) {
@@ -133,22 +140,23 @@
                             var card = document.createElement('div');
                             card.className = 'w3-third w3-padding';
                             
+                            console.log(ticket.price);
                             // Criar o conteúdo do card com base nos dados do bilhete
                             card.innerHTML = `
                                     <div class="w3-card-3">
                                     <header class="w3-container w3-light-grey">
                                         <h4>${ticket.origin} to ${ticket.destination} - ${ticket.id}</h4>
                                     </header>
-                                    <div class="w3-container" style="margin:15px">
+                                    <div class="w3-container" style="margin:15px" >
                                         <p><strong>Departure Date:</strong> ${ticket.departureDate}</p>
                                         <p><strong>Departure Time:</strong> ${ticket.departureTime.split(':').slice(0, 2).join(':')}</p>
                                         <p><strong>Arrival Time:</strong> ${ticket.arrivalTime.split(':').slice(0, 2).join(':')}</p>
-                                        <p><strong>Price:</strong> ${ticket.price} ${currentCoin}</p>
-                                        <p><strong>Seats Available:</strong> ${ticket.seats - ticket.occupiedSeats.length}</p>
+                                        <p class='ticket-price'><strong>Price:</strong> ${ticket.price} ${currentCoin}</p>
+                                        <p><strong>Seats Available:</strong> ${(ticket.seats - ticket.occupiedSeats.length)}</p>
                                     </div>
                                     <button class="w3-button w3-block w3-dark-grey book-button" onclick="bookTicket(${ticket.id})"><strong>Book Now</strong></button>                                    </div>
                                 `;
-
+                                console.log(ticket);
                             // Adicionar o card à página
                             document.getElementById('ticketContainer').appendChild(card);
                         });
@@ -287,8 +295,66 @@
                 if (storedParams.passengers.child > 0) {
                     passengersOneWay.textContent += `, ${storedParams.passengers.child} Child`;
                 }
+
+                // Adicionar a moeda armazenada
+                var currencyOneWay = document.getElementById("CurrencyOneWay");
+                currencyOneWay.value = currentCoin;
+                currencyOneWay.querySelectorAll('option').forEach(option => {
+                    if (option.value === currentCoin) {
+                        option.disabled = true;
+                    } else {
+                        option.disabled = false;
+                    }
+                });
+                // da disbled no value selecionado
+                
             }
 
+            function handleCurrencyChange(identifier) {
+                var selectElement = document.getElementById('Currency' + identifier);
+                
+                // da disabled no selecionado
+                var currencyOneWay = document.getElementById("CurrencyOneWay");
+                currencyOneWay.querySelectorAll('option').forEach(option => {
+                    if (option.value ===  selectElement.value) {
+                        option.disabled = true;
+                    } else {
+                        option.disabled = false;
+                    }
+                });
+                var selectedCurrency = selectElement.value;
+                
+
+                // Faz uma solicitação ao backend para atualizar os dados com base na nova moeda
+                fetch('http://localhost:8080/api/exchange/'+ currentCoin +'/' + selectedCurrency)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to update data with new currency');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        var currencyValue = data;
+                        currentCoin = selectedCurrency;
+                        localStorage.setItem('currency', JSON.stringify({ [selectedCurrency]: currencyValue }));
+
+                        var ticketCards = document.querySelectorAll('.w3-card-3');
+                        ticketCards.forEach(ticketCard => {
+                            // Obter o preço do bilhete
+                            var priceElement = ticketCard.querySelector('.ticket-price');
+                            var currentPrice = parseFloat(priceElement.textContent.split(' ')[1]); // Extrair o preço atual
+
+                            // Calcular o novo preço na nova moeda
+                            var newPrice = (currentPrice * currencyValue).toFixed(2);
+
+                            // Atualizar o elemento do preço com o novo preço e a nova moeda
+                            priceElement.textContent = ` ${newPrice} ${selectedCurrency}`;
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error updating data:', error);
+                    });
+            }
 
 
 
