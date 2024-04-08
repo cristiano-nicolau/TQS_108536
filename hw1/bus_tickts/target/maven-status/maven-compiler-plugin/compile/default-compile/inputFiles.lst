@@ -1,3 +1,4 @@
+/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/cache/Cache.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/services/ExchangeRateService.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/config/CorsConfig.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/config/ConfigUtils.java
@@ -12,7 +13,6 @@
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/services/MarkedTripService.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/http/IHttpClient.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/repository/TripRepository.java
-/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/cache/CachingConfig.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/controller/MarkedTripController.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/repository/MarkedTripRepository.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/controller/ExchangeController.java

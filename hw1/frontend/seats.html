@@ -373,8 +373,8 @@
                     return seatId !== undefined;
                 });
 
-
-            if (localStorage.getItem('OtherTrip') === null) {
+            
+            if (localStorage.getItem('OtherTrip') === null && localStorage.getItem('tripBack') == null ) {
                 var tripAway = JSON.parse(localStorage.getItem('tripAway'));
                 tripAway.occupiedSeats = selectedSeatIds.map(function (seatId) {
                     return { seatNumber: seatId };
@@ -409,6 +409,7 @@
                 var otherTrip = JSON.parse(localStorage.getItem('OtherTrip'));
 
                 console.log(otherTrip);
+                console.log(localStorage.getItem('tripAway'));
 
                 var url = 'search.html?departure=' + otherTrip.departure + '&arrival=' + otherTrip.arrival + '&departureDate=' + otherTrip.departureDate;
 
@@ -422,18 +423,24 @@
 
 
         function getSearchParams() {
+            var currency = JSON.parse(localStorage.getItem('currency'));
+            var currentCoin = Object.keys(currency)[0];
             var searchParams = new URLSearchParams(window.location.search);
             var tripId = searchParams.get('tripId');
             var tripType = searchParams.get('tripType');
 
             var tripAway = JSON.parse(localStorage.getItem('tripAway'));
+            var otherTrip  = JSON.parse(localStorage.getItem('otherTrip'));
             var tripBack = (localStorage.getItem('tripBack'));
+            console.log(tripBack);
+
             if (tripBack != null) {
                 tripBack = JSON.parse(tripBack);
             }
 
             console.log(tripAway);
             console.log(tripBack);
+            console.log(otherTrip)
 
             var id = document.getElementById('id');
             var from = document.getElementById('from');
@@ -446,6 +453,7 @@
             var price = document.getElementById('price');
 
             if (tripBack == null) {
+
                 var adults = tripAway.passengers.adult;
                 var children = tripAway.passengers.child;
 
@@ -459,15 +467,33 @@
                 if (children > 0) {
                     numPassengers.innerHTML += ` Children: ${children}`;
                 }
-                price.innerHTML = tripAway.price;
 
+                if (currentCoin !== 'USD') {
+                fetch('http://localhost:8080/api/exchange/USD/' + currentCoin)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to update data with new currency');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            price.innerHTML = (parseFloat(tripAway.price) * parseFloat(data)).toFixed(2) + ' ' + currentCoin;
+                        })
+                        .catch(error => {
+                            console.error('Error updating data:', error);
+                        });
+            }
+
+                else {
+                    price.innerHTML = tripAway.price + ' ' + currentCoin;
+                }
                 var seatNumbers = tripAway.occupiedSeats;
                 var occupiedSeats = seatNumbers.map(function (seat) {
-    // Remove o primeiro caractere (letra)
-    var seatNumber = seat.substring(1);
-    // Se o comprimento do número do assento for menor que 2, preencha com zero à esquerda
-    return seatNumber.padStart(2, '0');
-});
+                    // Remove o primeiro caractere (letra)
+                    var seatNumber = seat.substring(1);
+                    // Se o comprimento do número do assento for menor que 2, preencha com zero à esquerda
+                    return seatNumber.padStart(2, '0');
+                });
 
                 console.log(occupiedSeats);
                 var seats = document.querySelectorAll('input[type="checkbox"]');
@@ -491,7 +517,27 @@
                 if (children > 0) {
                     numPassengers.innerHTML += ` Children: ${children}`;
                 }
-                price.innerHTML = tripBack.price;
+
+                if (currentCoin !== 'USD') {
+                fetch('http://localhost:8080/api/exchange/USD/' + currentCoin)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to update data with new currency');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            price.innerHTML = (parseFloat(tripBack.price) * parseFloat(data)).toFixed(2) + ' ' + currentCoin;
+                        })
+                        .catch(error => {
+                            console.error('Error updating data:', error);
+                        });
+            }
+
+                else {
+                    price.innerHTML = tripBack.price + ' ' + currentCoin;
+                }
+
 
                 var seatNumbers = tripBack.occupiedSeats;
                 var occupiedSeats = seatNumbers.map(function (seat) {

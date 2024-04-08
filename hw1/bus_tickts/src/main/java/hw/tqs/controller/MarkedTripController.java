@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,9 +41,10 @@ public class MarkedTripController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getMarkedTripById(@PathVariable Long id) {
+    public ResponseEntity<?> getMarkedTripById(@PathVariable String id) {
         try {
-            MarkedTrip markedTrip = markedTripService.getMarkedTripById(id);
+            Long tripId = Long.parseLong(id);
+            MarkedTrip markedTrip = markedTripService.getMarkedTripById(tripId);
             if (markedTrip == null) {
                 logger.info("Marked trip not found");
                 return new ResponseEntity<>("Marked trip not found", HttpStatus.NOT_FOUND);
@@ -66,10 +68,32 @@ public class MarkedTripController {
         return new ResponseEntity<>(markedTrips, HttpStatus.OK);
     }
 
-    // @PostMapping("/")
-    // public ResponseEntity<?> saveMarkedTrip(@RequestBody MarkedTrip markedTrip) {
+    @PostMapping("/")
+    public ResponseEntity<?> saveMarkedTrip(@RequestBody MarkedTrip markedTrip) {
+        try {
+            MarkedTrip savedMarkedTrip = markedTripService.saveMarkedTrip(markedTrip);
+            logger.info("Saved marked trip successfully");
+            Long id = savedMarkedTrip.getId();
+            return new ResponseEntity<>(id, HttpStatus.CREATED);
+        } catch (Exception e) {
+            logger.error("Bad Request", e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 
-    // }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteMarkedTrip(@PathVariable("id") String id) {
+        try {
+            Long tripId = Long.parseLong(id);
+            markedTripService.deleteMarkedTrip(tripId);
+            logger.info("Marked trip with ID " + tripId + " deleted successfully.");
+            return new ResponseEntity<>("Marked trip with ID " + id + " deleted successfully.", HttpStatus.OK);
+        } catch (Exception e) {
+            logger.error("Failed to delete marked trip with ID: " + id, e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
     
 }

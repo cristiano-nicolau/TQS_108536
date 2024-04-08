@@ -68,7 +68,7 @@
                     </form>
                 </div>
                 <div class="w3-row-padding w3-center" style="margin:20px;">
-                    <button class="w3-button w3-round-xlarge w3-yellow w3-margin-top w3-animate-bottom" type="submit">Submit</button>
+                    <button class="w3-button w3-round-xlarge w3-yellow w3-margin-top w3-animate-bottom" type="submit" onclick="SubmitData()">Submit</button>
                 </div>
             </div>
             
@@ -103,9 +103,33 @@
     //no fim colcoa o valor do total a pagar
     var tripDetails = document.createElement('div');
     tripDetails.className = 'w3-container w3-padding-small';
+
+    
     
     var total = document.createElement('p');
-    total.innerHTML = '<strong> Total to Pay:</strong> <span id="totalToPay">' + getTotalToPay() + '</span>';
+    var currency = JSON.parse(localStorage.getItem('currency'));
+        var currentCoin = Object.keys(currency)[0];
+    if (currentCoin !== 'USD') {
+                fetch('http://localhost:8080/api/exchange/USD/' + currentCoin)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to update data with new currency');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            var totalPrice = getTotalToPay() * data;
+                            total.innerHTML = '<strong> Total to Pay:</strong> <span id="totalToPay">' + totalPrice.toFixed(2)+ ' ' + currentCoin + '</span>';
+                        })
+                        .catch(error => {
+                            console.error('Error updating data:', error);
+                        });
+            }
+
+                else {
+                    total.innerHTML = '<strong> Total to Pay:</strong> <span id="totalToPay">' + getTotalToPay() + ' ' + currentCoin + '</span>';
+                }
+
     
     tripDetails.appendChild(total);
     tripDetailsContainer.appendChild(tripDetails);
@@ -147,8 +171,32 @@
         arrivalTime.innerHTML = '<strong>Arrival Time:</strong> <span id="' + prefix + 'arrivalTime">' + trip.arrivalTime.split(':').slice(0, 2).join(':') + '</span>';
         tripDetails.appendChild(arrivalTime);
 
+
+        var currency = JSON.parse(localStorage.getItem('currency'));
+        var currentCoin = Object.keys(currency)[0];
+
         var price = document.createElement('p');
-        price.innerHTML = '<strong>Price:</strong> <span id="' + prefix + 'price">' + trip.price + '</span>';
+
+        if (currentCoin !== 'USD') {
+                fetch('http://localhost:8080/api/exchange/USD/' + currentCoin)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to update data with new currency');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            var newPrice = trip.price * data;
+                            price.innerHTML = '<strong>Price:</strong> <span id="' + prefix + 'price">' + newPrice.toFixed(2) + ' ' + currentCoin + '</span>';
+                        })
+                        .catch(error => {
+                            console.error('Error updating data:', error);
+                        });
+            }
+
+                else {
+                    price.innerHTML = '<strong>Price:</strong> <span id="' + prefix + 'price">' + trip.price + ' ' + currentCoin + '</span>';
+                }
         tripDetails.appendChild(price);
         
 
@@ -184,6 +232,138 @@
 }
 
 });
+
+function SubmitData() {
+    var tripAway = JSON.parse(localStorage.getItem('tripAway'));    
+    var tripBack = JSON.parse(localStorage.getItem('tripBack'));
+
+    var name = document.querySelector('input[name="name"]').value;
+    var email = document.querySelector('input[name="email"]').value;
+    var phone = document.querySelector('input[name="phone"]').value;
+    var nif = document.querySelector('input[name="nif"]').value;
+    var address = document.querySelector('input[name="address"]').value;
+    var city = document.querySelector('input[name="city"]').value;
+    var zipCode = document.querySelector('input[name="zip"]').value;
+    var cardType = document.querySelector('select[name="cardType"]').value;
+    var cardNumber = document.querySelector('input[name="cardNumber"]').value;
+
+
+    if (!name || !email || !phone || !nif || !address || !city || !zipCode || !cardNumber) {
+        alert('Please fill in all the fields');
+        return;
+    }
+
+    var awayid, backid;
+
+    var seatsList = tripAway.occupiedSeats.map(function(seat) {
+        return seat.seatNumber;
+    });
+
+    console.log(tripAway.passengers.child);
+    console.log(tripAway.passengers.adult);
+
+    var dataAway = {
+            tripID: tripAway.id,
+            numPassagersChildren: tripAway.passengers.child,
+            numPassagersAdults: tripAway.passengers.adult,
+            seats: seatsList,
+            name: name,
+            email: email,
+            phone: phone,
+            nif: nif,
+            address: address,
+            city: city,
+            zipCode: zipCode,
+            cardType: cardType,
+            cardNumber: cardNumber
+    };
+
+    fetch ('http://localhost:8080/api/mark/trip/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataAway)
+        })
+        .then(response => {
+            if (!response.ok) {
+                response.text().then(errorMessage => {
+            alert('Failed to submit data: ' + errorMessage);
+            throw new Error('Failed to submit data');
+        });
+
+            }
+            return response.json();
+        })
+        .then(data => {
+            awayid = data; // Atribui o ID da viagem marcada aqui
+            if (!tripBack) {
+                redirectToThankYouPage(awayid);
+            }
+           
+        })
+        .catch(error => {
+            console.error('Error submitting data:', error);
+        });
+
+
+    if (tripBack != null){
+
+        var seatsList = tripBack.occupiedSeats.map(function(seat) {
+            return seat.seatNumber;
+        });
+        var dataBack ={
+            tripID: tripBack.id,
+            numPassagersChildren: tripBack.passengers.child,
+            numPassagersAdults: tripBack.passengers.adult,
+            seats: seatsList,
+            name: name,
+            email: email,
+            phone: phone,
+            nif: nif,
+            address: address,
+            city: city,
+            zipCode: zipCode,
+            cardType: cardType,
+            cardNumber: cardNumber
+        }
+
+        fetch ('http://localhost:8080/api/mark/trip/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataBack)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to submit data');
+                }
+                return response.json();
+            })
+            .then(data => {
+                backid = data;
+                redirectToThankYouPage(awayid, backid);
+               
+            })
+            .catch(error => {
+                console.error('Error submitting data:', error);
+            });
+    }
+
+    
+        
+
+    function redirectToThankYouPage(awayid, backid) {
+        var url = 'thankyou.html?away=' + awayid;
+        if (backid) {
+            url += '&back=' + backid;
+        }
+        window.location.href = url;
+    }
+}
+
+
 
 
             

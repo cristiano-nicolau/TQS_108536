@@ -1,27 +1,91 @@
 package hw.tqs.services;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.swing.text.html.Option;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import hw.tqs.controller.TripController;
 import hw.tqs.model.MarkedTrip;
+import hw.tqs.model.Trip;
 import hw.tqs.repository.MarkedTripRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class MarkedTripService {
     
+        private static final Logger logger = LogManager.getLogger(TripController.class);
+
+
     @Autowired
     private MarkedTripRepository markedTripRepository;
 
-    public MarkedTrip saveMarkedTrip(MarkedTrip markedTrip) {
+    @Autowired
+    private TripService tripService;
+
+    public MarkedTrip saveMarkedTrip(MarkedTrip markedTrip) throws Exception {
+        Trip trip = tripService.getTripById(markedTrip.getTripID());
+        if (trip == null) {
+            throw new Exception("Trip with ID " + markedTrip.getTripID() + " does not exist");
+        }
+
+        Integer availableSeats = trip.getSeats() - trip.getOccupiedSeats().size();
+        List<String> occupiedSeats = trip.getOccupiedSeats();
+
+        if (availableSeats <= 0) {
+            throw new Exception("Trip with ID " + markedTrip.getTripID() + " is full");
+        }
+
+        for (String seat : markedTrip.getSeats()) {
+            if (occupiedSeats.contains(seat)) {
+                throw new Exception("Seat " + seat + " is already occupied");
+            }
+        }
+
+        trip.setOccupiedSeats(markedTrip.getSeats());
+        tripService.saveTrip(trip);
+
         return markedTripRepository.save(markedTrip);
     }
 
+    @Transactional
     public void deleteMarkedTrip(Long id) {
-        markedTripRepository.deleteById(id);
+        // Buscar a MarkedTrip pelo ID
+        MarkedTrip markedTrip = markedTripRepository.findById(id);
+    
+        // Verificar se a MarkedTrip foi encontrada
+        if (markedTrip != null) {
+            // Buscar a Trip relacionada à MarkedTrip
+            Trip trip = tripService.getTripById(markedTrip.getTripID());
+    
+            // Verificar se a Trip foi encontrada
+            if (trip != null) {
+                // Remover os lugares ocupados da Trip
+                List<String> occupiedSeats = trip.getOccupiedSeats();
+                for (String seat : markedTrip.getSeats()) {
+                    occupiedSeats.remove(seat);
+                }
+                trip.setOccupiedSeats(occupiedSeats);
+    
+                // Excluir a MarkedTrip
+                markedTripRepository.deleteById(id);
+            } else {
+                logger.error("Trip not found for MarkedTrip with ID: " + id);
+                throw new EntityNotFoundException("Trip not found for MarkedTrip with ID: " + id);
+            }
+        } else {
+            logger.error("MarkedTrip not found with ID: " + id);
+            throw new EntityNotFoundException("MarkedTrip not found with ID: " + id);
+        }
     }
-
+    
     public MarkedTrip updateMarkedTrip(Long id, MarkedTrip markedTrip) {
         markedTripRepository.deleteById(id);
         return markedTripRepository.save(markedTrip);

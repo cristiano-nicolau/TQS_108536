@@ -165,6 +165,8 @@
 
             }
 
+            console.log( JSON.parse(localStorage.getItem('requestData')))
+
             function bookTicket(ticketId) {
                 var url = `http://localhost:8080/api/trips/${ticketId}`;
                 // Fazer solicitação à API para obter dados dos bilhetes
@@ -197,7 +199,7 @@
                             };
 
                             localStorage.setItem('tripAway', JSON.stringify(tripAway));
-                            if(storedParams.tripType === 'RoundTrip'){
+                            if(storedParams.tripType === 'Round Trip'){
                                 var OtherTrip = {
                                     tripType: 'RoundTrip',
                                     departure: data.destination,
@@ -220,7 +222,8 @@
                                 occupiedSeats: data.occupiedSeats,
                                 passengers: storedParams.passengers,                      
                             };
-                            localStorage.setItem('tripBack', JSON.stringify(OtherTrip));
+                            localStorage.setItem('tripBack', JSON.stringify(tripBack));
+                            console.log(localStorage.getItem('tripBack'));
                             localStorage.removeItem('OtherTrip');
                         }               
                         var url = 'seats.html?tripId=' + ticketId + '&tripType=' + storedParams.tripType;                        
@@ -248,7 +251,7 @@
                 var tripAway = JSON.parse(localStorage.getItem('tripAway'));
                 var otherTrip = JSON.parse(localStorage.getItem('OtherTrip'));
                 
-                if (!storedParams && tripAway && otherTrip) {
+                if (tripAway && otherTrip) {
                     storedParams = otherTrip;
                 }
 

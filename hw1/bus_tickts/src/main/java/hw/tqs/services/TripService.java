@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import hw.tqs.model.Trip;
 import hw.tqs.repository.TripRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class TripService {

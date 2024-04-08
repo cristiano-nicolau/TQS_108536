@@ -17,7 +17,7 @@
         <div class="w3-xlarge w3-animate-top">
             <h2 class="w3-display-topleft w3-padding-large"><strong>TravelEase</strong></h2>
             <h2 class="w3-display-topmiddle w3-padding-large">Travel with comfort and safety</h2>
-            <h2 class="w3-display-topright w3-padding-large" id="yourtickets"><strong>Your tickets</strong></h2>
+            <h2 class="w3-display-topright w3-padding-large" id="yourtickets" onclick="ListTickts()"><strong>Your tickets</strong></h2>
         </div>
 
 
@@ -320,13 +320,21 @@
         }
 
         // guarda na local storage a moeda e o seu valor currente ou seja {moeda:valor}, que quero que seja de inicio o USD, 1
-        localStorage.removeItem('currency');
-        localStorage.removeItem('requestData');
-        localStorage.removeItem('tripAway');
-        localStorage.removeItem('tripBack');
-        localStorage.removeItem('OtherTrip');
-        localStorage.setItem('currency', JSON.stringify({ 'USD': 1 }));     
+        function limpar() {
+                localStorage.removeItem('currency');
+                localStorage.removeItem('requestData');
+                localStorage.removeItem('tripAway');
+                localStorage.removeItem('tripBack');
+                localStorage.removeItem('OtherTrip');
+                localStorage.removeItem('markedBackTripID');
+                localStorage.removeItem('markedAwayTripID');
+                localStorage.setItem('currency', JSON.stringify({ 'USD': 1 }));
+            };  
+            window.onload = limpar();
 
+        function ListTickts(){
+            window.location.href='markedlist.html'
+        }
     </script>
 </body>
 
