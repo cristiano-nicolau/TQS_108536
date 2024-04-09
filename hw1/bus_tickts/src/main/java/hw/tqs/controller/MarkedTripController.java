@@ -85,6 +85,10 @@ public class MarkedTripController {
     public ResponseEntity<?> deleteMarkedTrip(@PathVariable("id") String id) {
         try {
             Long tripId = Long.parseLong(id);
+            if (!markedTripService.existsMarkedTrip(tripId)) {
+                logger.info("Marked trip not found");
+                return new ResponseEntity<>("Marked trip not found", HttpStatus.NOT_FOUND);
+            }
             markedTripService.deleteMarkedTrip(tripId);
             logger.info("Marked trip with ID " + tripId + " deleted successfully.");
             return new ResponseEntity<>("Marked trip with ID " + id + " deleted successfully.", HttpStatus.OK);

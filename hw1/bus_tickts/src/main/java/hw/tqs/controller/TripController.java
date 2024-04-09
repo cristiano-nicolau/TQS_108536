@@ -69,18 +69,30 @@ public class TripController {
 
     @GetMapping("/{origin}/{destination}/{departureDate}")
     public ResponseEntity<?> getTripByOriginAndDestinationAndDepartureDate(@PathVariable String origin, @PathVariable String destination, @PathVariable String departureDate) {
-        LocalDate date = LocalDate.parse(departureDate);
-        List<Trip> trips = tripService.getTripsByOriginAndDestinationAndDepartureDate(origin, destination, date);
-        if (trips.isEmpty()) {
-            return new ResponseEntity<>("No trips found", HttpStatus.NOT_FOUND);
+        try{
+            LocalDate date = LocalDate.parse(departureDate);
+            if (date.isBefore(LocalDate.now())) {
+                return new ResponseEntity<>("Invalid date", HttpStatus.BAD_REQUEST);
+            }
+            List<Trip> trips = tripService.getTripsByOriginAndDestinationAndDepartureDate(origin, destination, date);
+            if (trips.isEmpty()) {
+                return new ResponseEntity<>("No trips found", HttpStatus.NOT_FOUND);
+            }
+            logger.info("Retrieved trips successfully");
+            return new ResponseEntity<>(trips, HttpStatus.OK);
+        } catch (Exception e) {
+            logger.error("Internal Server Error", e);
+            return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        logger.info("Retrieved trips successfully");
-        return new ResponseEntity<>(trips, HttpStatus.OK);
+
     }
 
     @PostMapping("/")
     public ResponseEntity<?> addTrip(@RequestBody Trip trip) {
         try {
+            if (trip.getDepartureDate().isBefore(LocalDate.now())) {
+                return new ResponseEntity<>("Invalid date", HttpStatus.BAD_REQUEST);
+            }
             Trip newTrip = tripService.saveTrip(trip);
             logger.info("Trip added successfully");
             return new ResponseEntity<>(newTrip, HttpStatus.CREATED);
@@ -93,6 +105,10 @@ public class TripController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTrip(@PathVariable Integer id) {
         try {
+            if (tripService.getTripById(id) == null) {
+                logger.info("Trip not found");
+                return new ResponseEntity<>("Trip not found", HttpStatus.NOT_FOUND);
+            }
             tripService.deleteTrip(id);
             logger.info("Trip deleted successfully");
             return new ResponseEntity<>("Trip deleted successfully", HttpStatus.OK);
