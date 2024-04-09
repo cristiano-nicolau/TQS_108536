@@ -52,6 +52,8 @@ public class Trip {
     public Trip() {
     }
 
+    
+
     public void addOccupiedSeat(String seat) {
         this.occupiedSeats.add(seat);
     }
@@ -106,6 +108,10 @@ public class Trip {
 
     public double getPrice() {
         return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public int getSeats() {

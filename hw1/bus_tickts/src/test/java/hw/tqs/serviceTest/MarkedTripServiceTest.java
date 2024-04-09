@@ -55,7 +55,7 @@ public class MarkedTripServiceTest {
     @BeforeEach
     void setUp() {
         trip1 = new Trip("Porto", "Lisboa", LocalDate.now(), LocalTime.now(), LocalTime.now().plusHours(2), 50.0, 50, List.of("A12", "A20", "A30", "A40", "A25"));
-        markedTrip1 = new MarkedTrip(trip1.getId(), 2, 3, List.of("A15", "A22", "A31"), "John Doe", "johndoe@example.com", "123456789", "123456789", "123 Main St", "City", "12345", "Visa", "1234567890123456");
+        markedTrip1 = new MarkedTrip(trip1.getId(), 1,2, List.of("A15", "A22", "A31"), "John Doe", "johndoe@example.com", "123456789", "123456789", "123 Main St", "City", "12345", "Visa", "1234567890123456");
     }
 
     @Test

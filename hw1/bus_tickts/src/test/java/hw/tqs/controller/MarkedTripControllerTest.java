@@ -47,7 +47,7 @@ public class MarkedTripControllerTest {
     void testGetMarkedTrips() throws Exception {
         Trip trip1 = new Trip("Porto", "Lisboa", LocalDate.now(), LocalTime.now(), LocalTime.now().plusHours(2), 50.0, 50, List.of("A12", "A20", "A30", "A40", "A25"));
         List<MarkedTrip> markedTrips = List.of(
-            new MarkedTrip(trip1.getId(), 2, 3, List.of("A15", "A22", "A31"), "John Doe", "johndoe@example.com", "123456789", "123456789", "123 Main St", "City", "12345", "Visa", "1234567890123456"),
+            new MarkedTrip(trip1.getId(), 1,2, List.of("A15", "A22", "A31"), "John Doe", "johndoe@example.com", "123456789", "123456789", "123 Main St", "City", "12345", "Visa", "1234567890123456"),
             new MarkedTrip(trip1.getId(), 1, 2, List.of("A10", "A15", "A20"), "Jane Doe", "janedoe@example.com", "987654321", "987654321", "456 Main St", "City", "54321", "Mastercard", "9876543210987654"));
 
         when(markedTripService.getMarkedTrips()).thenReturn(markedTrips);
@@ -68,7 +68,7 @@ public class MarkedTripControllerTest {
     void testGetMarkedTripById() throws Exception {
         // Criação de dados de teste
         Trip trip = new Trip("Porto", "Lisboa", LocalDate.now(), LocalTime.now(), LocalTime.now().plusHours(2), 50.0, 50, List.of("A12", "A20", "A30", "A40", "A25"));
-        MarkedTrip markedTrip = new MarkedTrip(trip.getId(), 2, 3, List.of("A15", "A22", "A31"), "John Doe", "johndoe@example.com", "123456789", "123456789", "123 Main St", "City", "12345", "Visa", "1234567890123456");
+        MarkedTrip markedTrip = new MarkedTrip(trip.getId(), 1,2, List.of("A15", "A22", "A31"), "John Doe", "johndoe@example.com", "123456789", "123456789", "123 Main St", "City", "12345", "Visa", "1234567890123456");
         long id = 1;
         String idString = Long.toString(id);
 
@@ -110,7 +110,7 @@ public class MarkedTripControllerTest {
     void testGetMarkedTripsByTripID() throws Exception {
         // Criação de dados de teste
         Trip trip = new Trip("Porto", "Lisboa", LocalDate.now(), LocalTime.now(), LocalTime.now().plusHours(2), 50.0, 50, List.of("A12", "A20", "A30", "A40", "A25"));
-        MarkedTrip markedTrip = new MarkedTrip(1, 2, 3, List.of("A15", "A22", "A31"), "John Doe", "johndoe@example.com", "123456789", "123456789", "123 Main St", "City", "12345", "Visa", "1234567890123456");
+        MarkedTrip markedTrip = new MarkedTrip(1, 1,2, List.of("A15", "A22", "A31"), "John Doe", "johndoe@example.com", "123456789", "123456789", "123 Main St", "City", "12345", "Visa", "1234567890123456");
         long id = 1;
         int idInt = 1;
 
@@ -172,7 +172,7 @@ public class MarkedTripControllerTest {
         // Criação de dados de teste
         Trip trip = new Trip("Porto", "Lisboa", LocalDate.now(), LocalTime.now(), LocalTime.now().plusHours(2), 50.0, 50, List.of("A12", "A20", "A30", "A40", "A25"));
         trip.setId(1);
-        MarkedTrip markedTrip = new MarkedTrip(trip.getId(), 2, 3, List.of("A15", "A22", "A31"), "John Doe", "johndoe@example.com", "123456789", "123456789", "123 Main St", "City", "12345", "Visa", "1234567890123456");
+        MarkedTrip markedTrip = new MarkedTrip(trip.getId(), 1,2, List.of("A15", "A22", "A31"), "John Doe", "johndoe@example.com", "123456789", "123456789", "123 Main St", "City", "12345", "Visa", "1234567890123456");
 
         when(tripService.getTripById(trip.getId())).thenReturn(trip);
         when(markedTripService.saveMarkedTrip(any(MarkedTrip.class))).thenReturn(markedTrip);
