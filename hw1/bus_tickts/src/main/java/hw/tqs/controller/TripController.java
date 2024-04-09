@@ -42,18 +42,13 @@ public class TripController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getTripById(@PathVariable Integer id) {
-        try {
-            Trip trip = tripService.getTripById(id);
-            if (trip == null) {
-                logger.info("Trip not found");
-                return new ResponseEntity<>("Trip not found", HttpStatus.NOT_FOUND);
-            }
-            logger.info("Retrieved trip successfully");
-            return new ResponseEntity<>(trip, HttpStatus.OK);
-        } catch (Exception e) {
-            logger.error("Internal Server Error", e);
-            return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        Trip trip = tripService.getTripById(id);
+        if (trip == null) {
+            logger.info("Trip not found");
+            return new ResponseEntity<>("Trip not found", HttpStatus.NOT_FOUND);
         }
+        logger.info("Retrieved trip successfully");
+        return new ResponseEntity<>(trip, HttpStatus.OK);
     }
 
     @GetMapping("/{origin}/{destination}")
@@ -89,32 +84,24 @@ public class TripController {
 
     @PostMapping("/")
     public ResponseEntity<?> addTrip(@RequestBody Trip trip) {
-        try {
-            if (trip.getDepartureDate().isBefore(LocalDate.now())) {
-                return new ResponseEntity<>("Invalid date", HttpStatus.BAD_REQUEST);
-            }
-            Trip newTrip = tripService.saveTrip(trip);
-            logger.info("Trip added successfully");
-            return new ResponseEntity<>(newTrip, HttpStatus.CREATED);
-        } catch (Exception e) {
-            logger.error("Internal Server Error", e);
-            return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        if (trip.getDepartureDate().isBefore(LocalDate.now())) {
+            return new ResponseEntity<>("Invalid date", HttpStatus.BAD_REQUEST);
         }
+        Trip newTrip = tripService.saveTrip(trip);
+        logger.info("Trip added successfully");
+        return new ResponseEntity<>(newTrip, HttpStatus.CREATED);
+
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTrip(@PathVariable Integer id) {
-        try {
-            if (tripService.getTripById(id) == null) {
-                logger.info("Trip not found");
-                return new ResponseEntity<>("Trip not found", HttpStatus.NOT_FOUND);
-            }
-            tripService.deleteTrip(id);
-            logger.info("Trip deleted successfully");
-            return new ResponseEntity<>("Trip deleted successfully", HttpStatus.OK);
-        } catch (Exception e) {
-            logger.error("Internal Server Error", e);
-            return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        if (tripService.getTripById(id) == null) {
+               logger.info("Trip not found");
+            return new ResponseEntity<>("Trip not found", HttpStatus.NOT_FOUND);
         }
+        tripService.deleteTrip(id);
+        logger.info("Trip deleted successfully");
+        return new ResponseEntity<>("Trip deleted successfully", HttpStatus.OK);
+
     }
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TripService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bus_tickts</a> &gt; <a href="index.source.html" class="el_package">hw.tqs.services</a> &gt; <span class="el_source">TripService.java</span></div><h1>TripService.java</h1><pre class="source lang-java linenums">package hw.tqs.services;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import hw.tqs.model.Trip;
+import hw.tqs.repository.TripRepository;
+import jakarta.persistence.EntityNotFoundException;
+
+@Service
+<span class="fc" id="L15">public class TripService {</span>
+
+    @Autowired
+    private TripRepository tripRepository;
+    
+
+    public List&lt;Trip&gt; getTrips() {
+<span class="fc" id="L22">        return tripRepository.findAll();</span>
+    }
+
+    public Trip getTripById(Integer id) {
+<span class="fc" id="L26">        Optional&lt;Trip&gt; trip = tripRepository.findById(id);</span>
+<span class="fc" id="L27">        return trip.orElse(null);</span>
+    }
+
+    public List&lt;Trip&gt; getTripsByOriginAndDestination(String origin, String destination) {
+<span class="fc" id="L31">        return tripRepository.findByOriginAndDestination(origin, destination);</span>
+    }
+
+    public List&lt;Trip&gt; getTripsByOriginAndDestinationAndDepartureDate(String origin, String destination, LocalDate departureDate) {
+<span class="fc" id="L35">        return tripRepository.findByOriginAndDestinationAndDepartureDate(origin, destination, departureDate);</span>
+    }
+
+    public Trip saveTrip(Trip trip) {
+<span class="fc" id="L39">        return tripRepository.save(trip);</span>
+    }
+
+    public List&lt;Trip&gt; saveTrips(List&lt;Trip&gt; trips) {
+<span class="fc" id="L43">        return tripRepository.saveAll(trips);</span>
+    }
+
+    public void deleteTrip(Integer id) {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (!tripRepository.existsById(id)) {</span>
+<span class="fc" id="L48">            throw new EntityNotFoundException(&quot;Trip not found&quot;);</span>
+        }
+<span class="fc" id="L50">        tripRepository.deleteById(id);</span>
+<span class="fc" id="L51">    }</span>
+
+    public void deleteAllTrips() {
+<span class="fc" id="L54">        tripRepository.deleteAll();</span>
+<span class="fc" id="L55">    }</span>
+
+    public Trip updateTrip(Integer id, Trip trip) {
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (!tripRepository.existsById(id)) {</span>
+<span class="fc" id="L59">            throw new EntityNotFoundException(&quot;Trip not found&quot;);</span>
+        }
+<span class="fc" id="L61">        deleteTrip(id);</span>
+<span class="fc" id="L62">        return tripRepository.save(trip);</span>
+    }
+
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

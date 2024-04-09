@@ -98,6 +98,15 @@ public class TripControllerTest {
     }
 
     @Test
+    @DisplayName("Test get trip by id with invalid id")
+    void testGetTripByIdWithInvalidId() throws NumberFormatException, Exception{
+        mockMvc.perform(get("/api/trips/abc"))
+                .andExpect(status().isBadRequest());
+    }
+
+
+
+    @Test
     @DisplayName("Test get trips by origin and destination")
     void testGetTripsByOriginAndDestination() throws Exception {
         LocalDate departureDate = LocalDate.of(2024, 4, 10);

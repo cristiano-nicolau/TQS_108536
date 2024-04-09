@@ -18,15 +18,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import java.net.URISyntaxException;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertThrows;
-
-import java.sql.Timestamp;
-
-import javax.xml.crypto.URIReferenceException;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -38,6 +31,7 @@ public class TripServiceTest {
 
     private Trip trip1;
     private Trip trip2;
+    private Trip trip3;
 
     @Mock
     private TripRepository tripRepository;
@@ -49,6 +43,7 @@ public class TripServiceTest {
     void setUp(){
         trip1 = new Trip("Porto", "Lisboa", LocalDate.now(), LocalTime.now(), LocalTime.now().plusHours(2), 50.0, 50,List.of("A12", "A20", "A30", "A40", "A25"));
         trip2 = new Trip("Lisboa", "Faro", LocalDate.now(), LocalTime.now(), LocalTime.now().plusHours(3), 60.0, 50,List.of("A10", "A15", "A20", "A25"));
+        trip3 = new Trip("Porto", "Faro", LocalDate.now(), LocalTime.now(), LocalTime.now().plusHours(4), 70.0, 50);
     }
 
     @Test
@@ -118,7 +113,7 @@ public class TripServiceTest {
     @Test
     @DisplayName("Test save trips")
     void testSaveTrips() {
-        List<Trip> trips = List.of(trip1, trip2);
+        List<Trip> trips = List.of(trip1, trip2, trip3);
         when(tripRepository.saveAll(trips)).thenReturn(trips);
         assertThat(tripService.saveTrips(trips)).isEqualTo(trips);
     }
@@ -151,5 +146,12 @@ public class TripServiceTest {
         when(tripRepository.existsById(1)).thenReturn(true);
         when(tripRepository.save(trip2)).thenReturn(trip2);
         assertThat(tripService.updateTrip(1, trip2)).isEqualTo(trip2);
+    }
+
+    @Test
+    @DisplayName("Test update trip that does not exist")
+    void testUpdateTripNotFound() {
+        when(tripRepository.existsById(1)).thenReturn(false);
+        assertThrows(EntityNotFoundException.class, () -> tripService.updateTrip(1, trip2));
     }
 }

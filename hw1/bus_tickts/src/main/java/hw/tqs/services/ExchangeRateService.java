@@ -21,7 +21,7 @@ public class ExchangeRateService {
     private static final Logger logger = LogManager.getLogger(ExchangeRateService.class);
 
     private final String apiUrl = "https://api.freecurrencyapi.com/v1/latest";
-    private final String apiKey = "fca_live_fl0HmrwcSrZVVUYsQP0sIGIZYpI6WJGuaF7nqCHt";
+    private final String code = "fca_live_fl0HmrwcSrZVVUYsQP0sIGIZYpI6WJGuaF7nqCHt";
 
     public ExchangeRateService(HttpClient httpClient, Cache cache) {
         this.httpClient = httpClient;
@@ -51,12 +51,12 @@ public class ExchangeRateService {
     }
 
     private Double callApi(String baseCurrency, String targetCurrency) throws IOException, ParseException {
-        String requestUrl = apiUrl + "?apikey=" + apiKey + "&currencies=" + targetCurrency + "&base_currency=" + baseCurrency;
+        String requestUrl = apiUrl + "?apikey=" + code + "&currencies=" + targetCurrency + "&base_currency=" + baseCurrency;
         String response = httpClient.doHttpGet(requestUrl);
         return parseExchangeRateFromResponse(response, targetCurrency);
     }
 
-    private double parseExchangeRateFromResponse(String response, String targetCurrency) throws ParseException {
+    public double parseExchangeRateFromResponse(String response, String targetCurrency) throws ParseException {
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(response);
         JSONObject data = (JSONObject) jsonObject.get("data");

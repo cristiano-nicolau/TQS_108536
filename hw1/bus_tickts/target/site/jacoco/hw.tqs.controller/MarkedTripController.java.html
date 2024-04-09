@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MarkedTripController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bus_tickts</a> &gt; <a href="index.source.html" class="el_package">hw.tqs.controller</a> &gt; <span class="el_source">MarkedTripController.java</span></div><h1>MarkedTripController.java</h1><pre class="source lang-java linenums">package hw.tqs.controller;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import hw.tqs.services.MarkedTripService;
+import hw.tqs.model.MarkedTrip;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+@RestController
+@RequestMapping(&quot;/api/mark/trip&quot;)
+<span class="fc" id="L25">public class MarkedTripController {</span>
+
+<span class="fc" id="L27">    private static final Logger logger = LogManager.getLogger(TripController.class);</span>
+
+    @Autowired
+    private MarkedTripService markedTripService;
+
+    @GetMapping(&quot;/&quot;)
+    public ResponseEntity&lt;?&gt; getMarkedTrips() {
+<span class="fc" id="L34">        List&lt;MarkedTrip&gt; markedTrips = markedTripService.getMarkedTrips();</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (markedTrips.isEmpty()) {</span>
+<span class="fc" id="L36">            logger.info(&quot;No marked trips found&quot;);</span>
+<span class="fc" id="L37">            return new ResponseEntity&lt;&gt;(&quot;No marked trips found&quot;, HttpStatus.NOT_FOUND);</span>
+        }
+<span class="fc" id="L39">        logger.info(&quot;Retrieved marked trips successfully&quot;);</span>
+<span class="fc" id="L40">        return new ResponseEntity&lt;&gt;(markedTrips, HttpStatus.OK);</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;?&gt; getMarkedTripById(@PathVariable String id) {
+        try {
+<span class="fc" id="L46">            Long tripId = Long.parseLong(id);</span>
+<span class="fc" id="L47">            MarkedTrip markedTrip = markedTripService.getMarkedTripById(tripId);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">            if (markedTrip == null) {</span>
+<span class="fc" id="L49">                logger.info(&quot;Marked trip not found&quot;);</span>
+<span class="fc" id="L50">                return new ResponseEntity&lt;&gt;(&quot;Marked trip not found&quot;, HttpStatus.NOT_FOUND);</span>
+            }
+<span class="fc" id="L52">            logger.info(&quot;Retrieved marked trip successfully&quot;);</span>
+<span class="fc" id="L53">            return new ResponseEntity&lt;&gt;(markedTrip, HttpStatus.OK);</span>
+<span class="nc" id="L54">        } catch (Exception e) {</span>
+<span class="nc" id="L55">            logger.error(&quot;Internal Server Error&quot;, e);</span>
+<span class="nc" id="L56">            return new ResponseEntity&lt;&gt;(&quot;Internal Server Error&quot;, HttpStatus.INTERNAL_SERVER_ERROR);</span>
+        }
+    }
+
+    @GetMapping(&quot;/trip/{tripID}&quot;)
+    public ResponseEntity&lt;?&gt; getMarkedTripsByTripID(@PathVariable Integer tripID) {
+<span class="fc" id="L62">        List&lt;MarkedTrip&gt; markedTrips = markedTripService.getMarkedTripsByTripID(tripID);</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if (markedTrips.isEmpty()) {</span>
+<span class="fc" id="L64">            logger.info(&quot;No marked trips found&quot;);</span>
+<span class="fc" id="L65">            return new ResponseEntity&lt;&gt;(&quot;No marked trips found&quot;, HttpStatus.NOT_FOUND);</span>
+        }
+<span class="fc" id="L67">        logger.info(&quot;Retrieved marked trips successfully&quot;);</span>
+<span class="fc" id="L68">        return new ResponseEntity&lt;&gt;(markedTrips, HttpStatus.OK);</span>
+    }
+
+    @PostMapping(&quot;/&quot;)
+    public ResponseEntity&lt;?&gt; saveMarkedTrip(@RequestBody MarkedTrip markedTrip) {
+        try {
+<span class="fc" id="L74">            MarkedTrip savedMarkedTrip = markedTripService.saveMarkedTrip(markedTrip);</span>
+<span class="fc" id="L75">            logger.info(&quot;Saved marked trip successfully&quot;);</span>
+<span class="fc" id="L76">            Long id = savedMarkedTrip.getId();</span>
+<span class="fc" id="L77">            return new ResponseEntity&lt;&gt;(id, HttpStatus.CREATED);</span>
+<span class="nc" id="L78">        } catch (Exception e) {</span>
+<span class="nc" id="L79">            logger.error(&quot;Bad Request&quot;, e);</span>
+<span class="nc" id="L80">            return new ResponseEntity&lt;&gt;(e.getMessage(), HttpStatus.BAD_REQUEST);</span>
+        }
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;?&gt; deleteMarkedTrip(@PathVariable(&quot;id&quot;) String id) {
+        try {
+<span class="fc" id="L87">            Long tripId = Long.parseLong(id);</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">            if (!markedTripService.existsMarkedTrip(tripId)) {</span>
+<span class="fc" id="L89">                logger.info(&quot;Marked trip not found&quot;);</span>
+<span class="fc" id="L90">                return new ResponseEntity&lt;&gt;(&quot;Marked trip not found&quot;, HttpStatus.NOT_FOUND);</span>
+            }
+<span class="fc" id="L92">            markedTripService.deleteMarkedTrip(tripId);</span>
+<span class="fc" id="L93">            logger.info(&quot;Marked trip with ID &quot; + tripId + &quot; deleted successfully.&quot;);</span>
+<span class="fc" id="L94">            return new ResponseEntity&lt;&gt;(&quot;Marked trip with ID &quot; + id + &quot; deleted successfully.&quot;, HttpStatus.OK);</span>
+<span class="nc" id="L95">        } catch (Exception e) {</span>
+<span class="nc" id="L96">            logger.error(&quot;Failed to delete marked trip with ID: &quot; + id, e);</span>
+<span class="nc" id="L97">            return new ResponseEntity&lt;&gt;(e.getMessage(), HttpStatus.BAD_REQUEST);</span>
+        }
+    }
+
+
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
