@@ -98,9 +98,10 @@
                     .then(response => response.json())
                     .then(data => {
                         tripAway = data;
+                        if (Back ===null){
                         var tripDetails = createTripDetailsElement(tripAway, 'Away', away);
                         tripDetailsContainer.appendChild(tripDetails);
-                    });
+                }});
                     if (Back) {
                         fetch('http://localhost:8080/api/mark/trip/' + Back)
                             .then(response => response.json())
@@ -111,7 +112,7 @@
                                 .then(response => response.json())
                                 .then(data => {
                                     tripBack = data;
-                                   var tripAwayDetails = createTripDetailsElement(tripAway, 'Away', away);
+                                    var tripAwayDetails = createTripDetailsElement(tripAway, 'Away', away);
                                     var tripBackDetails = createTripDetailsElement(tripBack, 'Back', back);
   
                                     tripDetailsContainer.appendChild(tripAwayDetails);
