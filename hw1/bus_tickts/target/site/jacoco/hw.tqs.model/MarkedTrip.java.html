@@ -8,8 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,146 +37,146 @@ public class MarkedTrip {
     private String cardNumber;
 
 
-<span class="fc" id="L42">    public MarkedTrip(Integer tripID, Integer numPassagersChildren, Integer numPassagersAdults, List&lt;String&gt; seats, String name, String email, String phone, String nif, String address, String city, String zipCode, String cardType, String cardNumber) {</span>
-<span class="fc" id="L43">        this.tripID = tripID;</span>
-<span class="fc" id="L44">        this.numPassagersChildren = numPassagersChildren;</span>
-<span class="fc" id="L45">        this.numPassagersAdults = numPassagersAdults;</span>
-<span class="fc" id="L46">        this.seats = seats;</span>
-<span class="fc" id="L47">        this.name = name;</span>
-<span class="fc" id="L48">        this.email = email;</span>
-<span class="fc" id="L49">        this.phone = phone;</span>
-<span class="fc" id="L50">        this.nif = nif;</span>
-<span class="fc" id="L51">        this.address = address;</span>
-<span class="fc" id="L52">        this.city = city;</span>
-<span class="fc" id="L53">        this.zipCode = zipCode;</span>
-<span class="fc" id="L54">        this.cardType = cardType;</span>
-<span class="fc" id="L55">        this.cardNumber = cardNumber;</span>
-<span class="fc" id="L56">    }</span>
+<span class="fc" id="L40">    public MarkedTrip(Integer tripID, Integer numPassagersChildren, Integer numPassagersAdults, List&lt;String&gt; seats, String name, String email, String phone, String nif, String address, String city, String zipCode, String cardType, String cardNumber) {</span>
+<span class="fc" id="L41">        this.tripID = tripID;</span>
+<span class="fc" id="L42">        this.numPassagersChildren = numPassagersChildren;</span>
+<span class="fc" id="L43">        this.numPassagersAdults = numPassagersAdults;</span>
+<span class="fc" id="L44">        this.seats = seats;</span>
+<span class="fc" id="L45">        this.name = name;</span>
+<span class="fc" id="L46">        this.email = email;</span>
+<span class="fc" id="L47">        this.phone = phone;</span>
+<span class="fc" id="L48">        this.nif = nif;</span>
+<span class="fc" id="L49">        this.address = address;</span>
+<span class="fc" id="L50">        this.city = city;</span>
+<span class="fc" id="L51">        this.zipCode = zipCode;</span>
+<span class="fc" id="L52">        this.cardType = cardType;</span>
+<span class="fc" id="L53">        this.cardNumber = cardNumber;</span>
+<span class="fc" id="L54">    }</span>
 
-<span class="fc" id="L58">    public MarkedTrip() {</span>
-<span class="fc" id="L59">    }</span>
+<span class="fc" id="L56">    public MarkedTrip() {</span>
+<span class="fc" id="L57">    }</span>
 
     public Long getId() {
-<span class="fc" id="L62">        return id;</span>
+<span class="fc" id="L60">        return id;</span>
     }
 
     public void setId(Long id) {
-<span class="fc" id="L66">        this.id = id;</span>
-<span class="fc" id="L67">    }</span>
+<span class="fc" id="L64">        this.id = id;</span>
+<span class="fc" id="L65">    }</span>
 
     public Integer getTripID() {
-<span class="fc" id="L70">        return tripID;</span>
+<span class="fc" id="L68">        return tripID;</span>
     }
 
     public void setTripID(Integer tripID) {
-<span class="fc" id="L74">        this.tripID = tripID;</span>
-<span class="fc" id="L75">    }</span>
+<span class="fc" id="L72">        this.tripID = tripID;</span>
+<span class="fc" id="L73">    }</span>
 
     public Integer getNumPassagersChildren() {
-<span class="fc" id="L78">        return numPassagersChildren;</span>
+<span class="fc" id="L76">        return numPassagersChildren;</span>
     }
 
     public void setNumPassagersChildren(Integer numPassagersChildren) {
-<span class="fc" id="L82">        this.numPassagersChildren = numPassagersChildren;</span>
-<span class="fc" id="L83">    }</span>
+<span class="fc" id="L80">        this.numPassagersChildren = numPassagersChildren;</span>
+<span class="fc" id="L81">    }</span>
 
     public Integer getNumPassagersAdults() {
-<span class="fc" id="L86">        return numPassagersAdults;</span>
+<span class="fc" id="L84">        return numPassagersAdults;</span>
     }
 
     public void setNumPassagersAdults(Integer numPassagersAdults) {
-<span class="fc" id="L90">        this.numPassagersAdults = numPassagersAdults;</span>
-<span class="fc" id="L91">    }</span>
+<span class="fc" id="L88">        this.numPassagersAdults = numPassagersAdults;</span>
+<span class="fc" id="L89">    }</span>
 
     public List&lt;String&gt; getSeats() {
-<span class="fc" id="L94">        return seats;</span>
+<span class="fc" id="L92">        return seats;</span>
     }
 
     public void setSeats(List&lt;String&gt; seats) {
-<span class="fc" id="L98">        this.seats = seats;</span>
-<span class="fc" id="L99">    }</span>
+<span class="fc" id="L96">        this.seats = seats;</span>
+<span class="fc" id="L97">    }</span>
 
     public void addSeat(String seat) {
-<span class="nc bnc" id="L102" title="All 2 branches missed.">        if (this.seats == null) {</span>
-<span class="nc" id="L103">            this.seats = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        if (this.seats == null) {</span>
+<span class="nc" id="L101">            this.seats = new ArrayList&lt;&gt;();</span>
         }
-<span class="nc" id="L105">        this.seats.add(seat);</span>
-<span class="nc" id="L106">    }</span>
+<span class="nc" id="L103">        this.seats.add(seat);</span>
+<span class="nc" id="L104">    }</span>
 
     public void removeSeat(String seat) {
-<span class="nc" id="L109">        this.seats.remove(seat);</span>
-<span class="nc" id="L110">    }</span>
+<span class="nc" id="L107">        this.seats.remove(seat);</span>
+<span class="nc" id="L108">    }</span>
 
     public String getName() {
-<span class="fc" id="L113">        return name;</span>
+<span class="fc" id="L111">        return name;</span>
     }
 
     public void setName(String name) {
-<span class="fc" id="L117">        this.name = name;</span>
-<span class="fc" id="L118">    }</span>
+<span class="fc" id="L115">        this.name = name;</span>
+<span class="fc" id="L116">    }</span>
 
     public String getEmail() {
-<span class="fc" id="L121">        return email;</span>
+<span class="fc" id="L119">        return email;</span>
     }
 
     public void setEmail(String email) {
-<span class="fc" id="L125">        this.email = email;</span>
-<span class="fc" id="L126">    }</span>
+<span class="fc" id="L123">        this.email = email;</span>
+<span class="fc" id="L124">    }</span>
 
     public String getPhone() {
-<span class="fc" id="L129">        return phone;</span>
+<span class="fc" id="L127">        return phone;</span>
     }
 
     public void setPhone(String phone) {
-<span class="fc" id="L133">        this.phone = phone;</span>
-<span class="fc" id="L134">    }</span>
+<span class="fc" id="L131">        this.phone = phone;</span>
+<span class="fc" id="L132">    }</span>
 
     public String getNif() {
-<span class="fc" id="L137">        return nif;</span>
+<span class="fc" id="L135">        return nif;</span>
     }
 
     public void setNif(String nif) {
-<span class="fc" id="L141">        this.nif = nif;</span>
-<span class="fc" id="L142">    }</span>
+<span class="fc" id="L139">        this.nif = nif;</span>
+<span class="fc" id="L140">    }</span>
 
     public String getAddress() {
-<span class="fc" id="L145">        return address;</span>
+<span class="fc" id="L143">        return address;</span>
     }
 
     public void setAddress(String address) {
-<span class="fc" id="L149">        this.address = address;</span>
-<span class="fc" id="L150">    }</span>
+<span class="fc" id="L147">        this.address = address;</span>
+<span class="fc" id="L148">    }</span>
 
     public String getCity() {
-<span class="fc" id="L153">        return city;</span>
+<span class="fc" id="L151">        return city;</span>
     }
 
     public void setCity(String city) {
-<span class="fc" id="L157">        this.city = city;</span>
-<span class="fc" id="L158">    }</span>
+<span class="fc" id="L155">        this.city = city;</span>
+<span class="fc" id="L156">    }</span>
 
     public String getZipCode() {
-<span class="fc" id="L161">        return zipCode;</span>
+<span class="fc" id="L159">        return zipCode;</span>
     }
 
     public void setZipCode(String zipCode) {
-<span class="fc" id="L165">        this.zipCode = zipCode;</span>
-<span class="fc" id="L166">    }</span>
+<span class="fc" id="L163">        this.zipCode = zipCode;</span>
+<span class="fc" id="L164">    }</span>
 
     public String getCardType() {
-<span class="fc" id="L169">        return cardType;</span>
+<span class="fc" id="L167">        return cardType;</span>
     }
 
     public void setCardType(String cardType) {
-<span class="fc" id="L173">        this.cardType = cardType;</span>
-<span class="fc" id="L174">    }</span>
+<span class="fc" id="L171">        this.cardType = cardType;</span>
+<span class="fc" id="L172">    }</span>
 
     public String getCardNumber() {
-<span class="fc" id="L177">        return cardNumber;</span>
+<span class="fc" id="L175">        return cardNumber;</span>
     }
 
     public void setCardNumber(String cardNumber) {
-<span class="fc" id="L181">        this.cardNumber = cardNumber;</span>
-<span class="fc" id="L182">    }</span>
+<span class="fc" id="L179">        this.cardNumber = cardNumber;</span>
+<span class="fc" id="L180">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
