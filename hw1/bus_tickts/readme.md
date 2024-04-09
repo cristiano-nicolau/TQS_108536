@@ -14,3 +14,7 @@ docker run --name mysql5 -e MYSQL_ROOT_PASSWORD=secret1 -e MYSQL_DATABASE=bus_ti
 docker exec -it mysql5 mysql -u root -p
 ```
 
+
+# Swagger
+
+http://localhost:8080/swagger-ui/index.html

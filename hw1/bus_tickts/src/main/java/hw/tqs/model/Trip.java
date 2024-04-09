@@ -68,6 +68,14 @@ public class Trip {
         return origin;
     }
 
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
     public String getDestination() {
         return destination;
     }
@@ -104,6 +112,10 @@ public class Trip {
         return seats;
     }
 
+    public void setSeats(int seats) {
+        this.seats = seats;
+    }
+
     public List<String> getOccupiedSeats() {
         return occupiedSeats;
     }
@@ -119,4 +131,6 @@ public class Trip {
     public void setId(Integer id) {
         this.id = id;
     }
+
+
 }

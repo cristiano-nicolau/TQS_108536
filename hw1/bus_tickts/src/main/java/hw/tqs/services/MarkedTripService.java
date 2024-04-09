@@ -3,6 +3,7 @@ package hw.tqs.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,24 +58,18 @@ public class MarkedTripService {
 
     @Transactional
     public void deleteMarkedTrip(Long id) {
-        // Buscar a MarkedTrip pelo ID
         MarkedTrip markedTrip = markedTripRepository.findById(id);
     
-        // Verificar se a MarkedTrip foi encontrada
         if (markedTrip != null) {
-            // Buscar a Trip relacionada à MarkedTrip
             Trip trip = tripService.getTripById(markedTrip.getTripID());
     
-            // Verificar se a Trip foi encontrada
             if (trip != null) {
-                // Remover os lugares ocupados da Trip
-                List<String> occupiedSeats = trip.getOccupiedSeats();
+                 List<String> occupiedSeats = new ArrayList<>(trip.getOccupiedSeats()); // Criar uma nova lista
                 for (String seat : markedTrip.getSeats()) {
                     occupiedSeats.remove(seat);
                 }
                 trip.setOccupiedSeats(occupiedSeats);
-    
-                // Excluir a MarkedTrip
+        
                 markedTripRepository.deleteById(id);
             } else {
                 logger.error("Trip not found for MarkedTrip with ID: " + id);

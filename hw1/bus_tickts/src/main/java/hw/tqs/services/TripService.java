@@ -39,5 +39,28 @@ public class TripService {
         return tripRepository.save(trip);
     }
 
+    public List<Trip> saveTrips(List<Trip> trips) {
+        return tripRepository.saveAll(trips);
+    }
+
+    public void deleteTrip(Integer id) {
+        if (!tripRepository.existsById(id)) {
+            throw new EntityNotFoundException("Trip not found");
+        }
+        tripRepository.deleteById(id);
+    }
+
+    public void deleteAllTrips() {
+        tripRepository.deleteAll();
+    }
+
+    public Trip updateTrip(Integer id, Trip trip) {
+        if (!tripRepository.existsById(id)) {
+            throw new EntityNotFoundException("Trip not found");
+        }
+        deleteTrip(id);
+        return tripRepository.save(trip);
+    }
+
     
 }

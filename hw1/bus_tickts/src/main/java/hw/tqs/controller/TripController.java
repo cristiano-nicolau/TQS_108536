@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -75,5 +76,29 @@ public class TripController {
         }
         logger.info("Retrieved trips successfully");
         return new ResponseEntity<>(trips, HttpStatus.OK);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<?> addTrip(@RequestBody Trip trip) {
+        try {
+            Trip newTrip = tripService.saveTrip(trip);
+            logger.info("Trip added successfully");
+            return new ResponseEntity<>(newTrip, HttpStatus.CREATED);
+        } catch (Exception e) {
+            logger.error("Internal Server Error", e);
+            return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTrip(@PathVariable Integer id) {
+        try {
+            tripService.deleteTrip(id);
+            logger.info("Trip deleted successfully");
+            return new ResponseEntity<>("Trip deleted successfully", HttpStatus.OK);
+        } catch (Exception e) {
+            logger.error("Internal Server Error", e);
+            return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

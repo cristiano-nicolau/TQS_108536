@@ -1,0 +1,5 @@
+hw/tqs/repositoryTest/TripRepositoryTest.class
+hw/tqs/connection/ExternalApiConnectionTest.class
+hw/tqs/serviceTest/TripServiceTest.class
+hw/tqs/serviceTest/MarkedTripServiceTest.class
+hw/tqs/cacheTest/CacheTest.class
