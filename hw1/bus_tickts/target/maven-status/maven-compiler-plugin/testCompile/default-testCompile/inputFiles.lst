@@ -5,6 +5,7 @@
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/test/java/hw/tqs/data/DataInitializerTest.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/test/java/hw/tqs/connection/ExternalApiConnectionTest.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/test/java/hw/tqs/serviceTest/MarkedTripServiceTest.java
+/home/cristiano/TQS_108536/hw1/bus_tickts/src/test/java/hw/tqs/selenium/SeleniumTest.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/test/java/hw/tqs/controller/TripControllerTest.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/test/java/hw/tqs/repositoryTest/MarkedTripRepositoryTest.java
 /home/cristiano/TQS_108536/hw1/bus_tickts/src/test/java/hw/tqs/controller/MarkedTripControllerTest.java
