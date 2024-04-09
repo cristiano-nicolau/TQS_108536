@@ -1,0 +1,8 @@
+hw.tqs.cache.Cache#getFromCache(Ljava/lang/String;)Ljava/lang/Double;
+==
+containsKey java.util.HashMap#containsKey(Ljava/lang/Object;)Z
+get java.util.HashMap#get(Ljava/lang/Object;)Ljava/lang/Object;
+info org.apache.logging.log4j.Logger#info(Ljava/lang/String;Ljava/lang/Object;)V
+incrementHits hw.tqs.cache.Cache#incrementHits()V
+incrementMisses hw.tqs.cache.Cache#incrementMisses()V
+incrementRequests hw.tqs.cache.Cache#incrementRequests()V

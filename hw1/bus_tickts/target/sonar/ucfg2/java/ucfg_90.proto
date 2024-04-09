@@ -1,0 +1,43 @@
+
+Ohw.tqs.services.TripService#getTripById(Ljava/lang/Integer;)Lhw/tqs/model/Trip;b
+X/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/services/TripService.java ("1*¹
+1 (,Œ
+‰
+ (,&
+%0 hw.tqs.repository.TripRepository"__id*O
+
+__unknown_file (3*1
+hw.tqs.services.TripService"
+tripRepository§¤
+ (9
+%1java.util.Optional"corg.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;*D
+
+__unknown_file ((
+&
+%0 hw.tqs.repository.TripRepository*5
+
+__unknown_file (
+
+idjava.lang.Integer2findById(Ljava/lang/Object;)f
+d
+ (:
+tripjava.util.Optional"__id*6
+
+__unknown_file (
+
+%1java.util.OptionaláÞ
+ ( 
+%2hw.tqs.model.Trip"?java.util.Optional#orElse(Ljava/lang/Object;)Ljava/lang/Object;*8
+
+__unknown_file (
+
+tripjava.util.Optional*"
+
+__unknown_file (
+""2orElse(Ljava/lang/Object;)"%
+ (!
+
+%2hw.tqs.model.Trip:#
+ (&
+idjava.lang.IntegerB
+hw.tqs.services.TripServiceH

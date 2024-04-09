@@ -1,0 +1,9 @@
+hw.tqs.controller.TripController#addTrip(Lhw/tqs/model/Trip;)Lorg/springframework/http/ResponseEntity;
+java.time.LocalDate#now()Ljava/time/LocalDate;
+org.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatusCode;)V
+org.springframework.http.ResponseEntity#instance-init#
+java.time.LocalDate#isBefore(Ljava/time/chrono/ChronoLocalDate;)Z
+==
+info org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V
+saveTrip hw.tqs.services.TripService#saveTrip(Lhw/tqs/model/Trip;)Lhw/tqs/model/Trip;
+getDepartureDate hw.tqs.model.Trip#getDepartureDate()Ljava/time/LocalDate;

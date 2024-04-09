@@ -1,0 +1,3 @@
+hw.tqs.services.TripService#deleteAllTrips()V
+==
+deleteAll org.springframework.data.repository.CrudRepository#deleteAll()V

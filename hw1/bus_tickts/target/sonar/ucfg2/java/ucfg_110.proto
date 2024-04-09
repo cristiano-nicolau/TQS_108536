@@ -1,0 +1,21 @@
+
+Bhw.tqs.services.MarkedTripService#getMarkedTrips()Ljava/util/List;h
+^/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/services/MarkedTripService.java] ](*"1*¡
+1^ ^(#ž
+›
+^ ^(#,
+%0&hw.tqs.repository.MarkedTripRepository"__id*[
+
+__unknown_file (?*=#
+!hw.tqs.services.MarkedTripService"
+markedTripRepositoryÌÉ
+^ ^(-
+%1java.util.List"Porg.springframework.data.repository.ListCrudRepository#findAll()Ljava/util/List;*J
+
+__unknown_file (.
+,
+%0&hw.tqs.repository.MarkedTripRepository2	findAll()""
+^ ^(.
+
+%1java.util.ListB%#
+!hw.tqs.services.MarkedTripServiceH

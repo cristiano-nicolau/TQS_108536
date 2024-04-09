@@ -1,0 +1,118 @@
+
+`hw.tqs.controller.MarkedTripController#getMarkedTrips()Lorg/springframework/http/ResponseEntity;m
+c/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/controller/MarkedTripController.java! !(+"3*°
+2$ $(]
+[
+$ $(%
+%3org.apache.logging.log4j.Logger"__id*"
+
+__unknown_file (
+""êç
+$ $(0
+
+%4void"9org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V*C
+
+__unknown_file ('
+%
+%3org.apache.logging.log4j.Logger*5
+
+__unknown_file (
+No marked trips found2info(Ljava/lang/String;)a
+_
+%A %(U)
+%5#org.springframework.http.HttpStatus"__id*"
+
+__unknown_file (
+""db
+% %('-
+%6'org.springframework.http.ResponseEntity"'org.springframework.http.ResponseEntityÎ
+Ë
+% %(V
+%7"lorg.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatusCode;)V*K
+
+__unknown_file (/
+-
+%6'org.springframework.http.ResponseEntity*5
+
+__unknown_file (
+No marked trips found*G
+
+__unknown_file (+
+)
+%5#org.springframework.http.HttpStatus";
+% %(W/
+-
+%6'org.springframework.http.ResponseEntity*Ý
+3"' "(8›
+˜
+"' "(8'
+%0!hw.tqs.services.MarkedTripService"__id*]
+
+__unknown_file (A*?(
+&hw.tqs.controller.MarkedTripController"
+markedTripServiceÀ½
+"' "(I
+%1java.util.List"Bhw.tqs.services.MarkedTripService#getMarkedTrips()Ljava/util/List;*E
+
+__unknown_file ()
+'
+%0!hw.tqs.services.MarkedTripService2getMarkedTrips()e
+c
+" "(J
+markedTripsjava.util.List"__id*2
+
+__unknown_file (
+
+%1java.util.List~|
+# #(!
+%2boolean"java.util.List#isEmpty()Z*;
+
+__unknown_file (
+
+markedTripsjava.util.List2	isEmpty()*
+2
+1*Ê
+1' '(]
+[
+' '(%
+%8org.apache.logging.log4j.Logger"__id*"
+
+__unknown_file (
+""øõ
+' '(:
+
+%9void"9org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V*C
+
+__unknown_file ('
+%
+%8org.apache.logging.log4j.Logger*C
+
+__unknown_file ('%
+#Retrieved marked trips successfully2info(Ljava/lang/String;)b
+`
+(1 ((>*
+%10#org.springframework.http.HttpStatus"__id*"
+
+__unknown_file (
+""ec
+( ((#.
+%11'org.springframework.http.ResponseEntity"'org.springframework.http.ResponseEntity×
+Ô
+( ((?
+%12"lorg.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatusCode;)V*L
+
+__unknown_file (0
+.
+%11'org.springframework.http.ResponseEntity*;
+
+__unknown_file (
+
+markedTripsjava.util.List*H
+
+__unknown_file (,
+*
+%10#org.springframework.http.HttpStatus"<
+( ((@0
+.
+%11'org.springframework.http.ResponseEntityB*(
+&hw.tqs.controller.MarkedTripControllerH

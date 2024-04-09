@@ -1,0 +1,4 @@
+hw.tqs.services.ExchangeRateService#callApi(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Double;
+==
+doHttpGet hw.tqs.http.HttpClient#doHttpGet(Ljava/lang/String;)Ljava/lang/String;
+parseExchangeRateFromResponse hw.tqs.services.ExchangeRateService#parseExchangeRateFromResponse(Ljava/lang/String;Ljava/lang/String;)D

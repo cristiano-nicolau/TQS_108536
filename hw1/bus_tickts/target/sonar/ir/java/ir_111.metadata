@@ -1,0 +1,5 @@
+hw.tqs.data.DataInitializer#init()V
+==
+info org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V
+insertData hw.tqs.data.DataInitializer#insertData()V
+count org.springframework.data.repository.CrudRepository#count()J

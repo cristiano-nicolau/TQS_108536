@@ -1,0 +1,3 @@
+hw.tqs.model.Trip#addOccupiedSeat(Ljava/lang/String;)V
+==
+add java.util.List#add(Ljava/lang/Object;)Z

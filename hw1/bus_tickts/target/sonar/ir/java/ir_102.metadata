@@ -1,0 +1,3 @@
+hw.tqs.services.TripService#getTripsByOriginAndDestination(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+==
+findByOriginAndDestination hw.tqs.repository.TripRepository#findByOriginAndDestination(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;

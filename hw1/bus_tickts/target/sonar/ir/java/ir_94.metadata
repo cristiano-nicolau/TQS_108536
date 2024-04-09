@@ -1,0 +1,3 @@
+hw.tqs.cache.Cache#clearCache()V
+==
+clear java.util.HashMap#clear()V

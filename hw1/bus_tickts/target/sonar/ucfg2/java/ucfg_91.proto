@@ -1,0 +1,33 @@
+
+phw.tqs.services.TripService#getTripsByOriginAndDestination(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;b
+X/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/services/TripService.java (4"1*Ú
+1 (Œ
+‰
+ (&
+%0 hw.tqs.repository.TripRepository"__id*O
+
+__unknown_file (3*1
+hw.tqs.services.TripService"
+tripRepository—”
+ (M
+%1java.util.List"qhw.tqs.repository.TripRepository#findByOriginAndDestination(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;*D
+
+__unknown_file ((
+&
+%0 hw.tqs.repository.TripRepository*8
+
+__unknown_file (
+
+originjava.lang.String*=
+
+__unknown_file (!
+
+destinationjava.lang.String2@findByOriginAndDestination(Ljava/lang/String;Ljava/lang/String;)""
+ (N
+
+%1java.util.List:&
+5 (C
+originjava.lang.String:+
+D (V
+destinationjava.lang.StringB
+hw.tqs.services.TripServiceH

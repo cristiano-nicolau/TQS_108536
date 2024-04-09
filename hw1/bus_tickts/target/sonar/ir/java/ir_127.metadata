@@ -1,0 +1,14 @@
+hw.tqs.services.MarkedTripService#saveMarkedTrip(Lhw/tqs/model/MarkedTrip;)Lhw/tqs/model/MarkedTrip;
+java.lang.Exception#<init>(Ljava/lang/String;)V
+java.lang.Exception#instance-init#
+==
+getOccupiedSeats hw.tqs.model.Trip#getOccupiedSeats()Ljava/util/List;
+contains java.util.List#contains(Ljava/lang/Object;)Z
+save org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;
+getTripID hw.tqs.model.MarkedTrip#getTripID()Ljava/lang/Integer;
+getSeats hw.tqs.model.Trip#getSeats()I
+saveTrip hw.tqs.services.TripService#saveTrip(Lhw/tqs/model/Trip;)Lhw/tqs/model/Trip;
+getSeats hw.tqs.model.MarkedTrip#getSeats()Ljava/util/List;
+getTripById hw.tqs.services.TripService#getTripById(Ljava/lang/Integer;)Lhw/tqs/model/Trip;
+size java.util.List#size()I
+setOccupiedSeats hw.tqs.model.Trip#setOccupiedSeats(Ljava/util/List;)V

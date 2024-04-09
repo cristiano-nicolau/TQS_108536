@@ -1,0 +1,3 @@
+hw.tqs.services.MarkedTripService#getMarkedTripsByTripID(Ljava/lang/Integer;)Ljava/util/List;
+==
+findByTripID hw.tqs.repository.MarkedTripRepository#findByTripID(Ljava/lang/Integer;)Ljava/util/List;

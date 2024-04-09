@@ -1,0 +1,15 @@
+
+7hw.tqs.model.Trip#getArrivalTime()Ljava/time/LocalTime;X
+N/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/model/Trip.javae e(#"1*©
+1f f(q
+o
+f f(
+%0java.time.LocalTime"__id*B
+
+__unknown_file (&*$
+hw.tqs.model.Trip"
+arrivalTime"'
+f f(
+
+%0java.time.LocalTimeB
+hw.tqs.model.TripH

@@ -1,0 +1,15 @@
+hw.tqs.services.MarkedTripService#deleteMarkedTrip(Ljava/lang/Long;)V
+jakarta.persistence.EntityNotFoundException#<init>(Ljava/lang/String;)V
+java.util.ArrayList#instance-init#
+java.util.ArrayList#<init>(Ljava/util/Collection;)V
+jakarta.persistence.EntityNotFoundException#instance-init#
+==
+getOccupiedSeats hw.tqs.model.Trip#getOccupiedSeats()Ljava/util/List;
+getTripID hw.tqs.model.MarkedTrip#getTripID()Ljava/lang/Integer;
+getSeats hw.tqs.model.MarkedTrip#getSeats()Ljava/util/List;
+remove java.util.List#remove(Ljava/lang/Object;)Z
+error org.apache.logging.log4j.Logger#error(Ljava/lang/String;)V
+findById hw.tqs.repository.MarkedTripRepository#findById(Ljava/lang/Long;)Lhw/tqs/model/MarkedTrip;
+deleteById hw.tqs.repository.MarkedTripRepository#deleteById(Ljava/lang/Long;)V
+getTripById hw.tqs.services.TripService#getTripById(Ljava/lang/Integer;)Lhw/tqs/model/Trip;
+setOccupiedSeats hw.tqs.model.Trip#setOccupiedSeats(Ljava/util/List;)V

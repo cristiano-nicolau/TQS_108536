@@ -1,0 +1,3 @@
+hw.tqs.cache.Cache#addToCache(Ljava/lang/String;Ljava/lang/Double;)V
+==
+put java.util.HashMap#put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;

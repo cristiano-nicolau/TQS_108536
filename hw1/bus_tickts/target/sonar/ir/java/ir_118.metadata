@@ -1,0 +1,6 @@
+hw.tqs.services.ExchangeRateService#parseExchangeRateFromResponse(Ljava/lang/String;Ljava/lang/String;)D
+org.json.simple.parser.JSONParser#<init>()V
+org.json.simple.parser.JSONParser#instance-init#
+==
+parse org.json.simple.parser.JSONParser#parse(Ljava/lang/String;)Ljava/lang/Object;
+get java.util.HashMap#get(Ljava/lang/Object;)Ljava/lang/Object;

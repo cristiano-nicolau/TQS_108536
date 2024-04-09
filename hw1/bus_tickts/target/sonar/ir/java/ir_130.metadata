@@ -1,0 +1,3 @@
+hw.tqs.services.MarkedTripService#existsMarkedTrip(Ljava/lang/Long;)Z
+==
+existsById hw.tqs.repository.MarkedTripRepository#existsById(Ljava/lang/Long;)Z

@@ -1,0 +1,6 @@
+hw.tqs.services.TripService#deleteTrip(Ljava/lang/Integer;)V
+jakarta.persistence.EntityNotFoundException#<init>(Ljava/lang/String;)V
+jakarta.persistence.EntityNotFoundException#instance-init#
+==
+existsById hw.tqs.repository.TripRepository#existsById(Ljava/lang/Integer;)Z
+deleteById org.springframework.data.repository.CrudRepository#deleteById(Ljava/lang/Object;)V

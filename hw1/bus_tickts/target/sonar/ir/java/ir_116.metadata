@@ -1,0 +1,7 @@
+hw.tqs.services.ExchangeRateService#getExchangeRate(Ljava/lang/String;Ljava/lang/String;)D
+hw.tqs.services.ExchangeRateService#callApi(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Double;
+==
+cacheTimer hw.tqs.cache.Cache#cacheTimer(Ljava/lang/String;I)V
+info org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V
+getFromCache hw.tqs.cache.Cache#getFromCache(Ljava/lang/String;)Ljava/lang/Double;
+addToCache hw.tqs.cache.Cache#addToCache(Ljava/lang/String;Ljava/lang/Double;)V

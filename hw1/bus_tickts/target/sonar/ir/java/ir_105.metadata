@@ -1,0 +1,3 @@
+hw.tqs.services.TripService#saveTrips(Ljava/util/List;)Ljava/util/List;
+==
+saveAll org.springframework.data.repository.ListCrudRepository#saveAll(Ljava/lang/Iterable;)Ljava/util/List;

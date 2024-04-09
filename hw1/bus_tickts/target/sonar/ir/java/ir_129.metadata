@@ -1,0 +1,4 @@
+hw.tqs.services.MarkedTripService#updateMarkedTrip(Ljava/lang/Long;Lhw/tqs/model/MarkedTrip;)Lhw/tqs/model/MarkedTrip;
+==
+save org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;
+deleteById hw.tqs.repository.MarkedTripRepository#deleteById(Ljava/lang/Long;)V
