@@ -13,10 +13,6 @@
     <artifactId>bus_tickts</artifactId>
     <version>1.0-SNAPSHOT</version>
 <properties>
-		<sonar.organization>hw1-tqs-108536</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.projectKey>hw1-tqs-108536_hw1-travelease</sonar.projectKey>
-
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
 
