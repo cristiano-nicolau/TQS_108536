@@ -1,185 +1,0 @@
-
-Fhw.tqs.http.HttpClient#doHttpGet(Ljava/lang/String;)Ljava/lang/String;]
-S/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/http/HttpClient.java ("startingBlock*ë
-2 (;b
-`
- (;
-respjava.lang.String"__id*4
-
-__unknown_file (
-
-%8java.lang.Stringv
-t
-   (
-%9java.util.logging.Logger"__id*B
-
-__unknown_file (&*$
-hw.tqs.http.HttpClient"
-loggerV
-T
-   (%
-%10java.util.logging.Level"__id*"
-
-__unknown_file (
-""¢Ÿ
-   (@
-%11void"\java.util.logging.Logger#log(Ljava/util/logging/Level;Ljava/lang/String;Ljava/lang/Object;)V*<
-
-__unknown_file ( 
-
-%9java.util.logging.Logger*<
-
-__unknown_file ( 
-
-%10java.util.logging.Level*0
-
-__unknown_file (
-[ HTTP ] GOT {0}*6
-
-__unknown_file (
-
-respjava.lang.String2Blog(Ljava/util/logging/Level;Ljava/lang/String;Ljava/lang/Object;)*
-1*•
-3 (9x
-v
- (9$
-entityorg.apache.http.HttpEntity"__id*>
-
-__unknown_file ("
- 
-%7org.apache.http.HttpEntity†
-ƒ
- (:
-%8java.lang.String"Yorg.apache.http.util.EntityUtils#toString(Lorg/apache/http/HttpEntity;)Ljava/lang/String;*@
-
-__unknown_file ($""
- org.apache.http.util.EntityUtils*B
-
-__unknown_file (&
-$
-entityorg.apache.http.HttpEntity*
-2*†
-startingBlock ('‹
-ˆ
- (
-%12"
-__annotate*2
-
-__unknown_file (
-java.lang.Override*5
-
-__unknown_file (
-
-urljava.lang.StringX
-V
-# (&
-urljava.lang.String"__annotation*#
-
-__unknown_file (
-
-%12*
-9*©
-4 (I¯
-¬
- (I@
-response4org.apache.http.client.methods.CloseableHttpResponse"__id*X
-
-__unknown_file (<
-:
-%64org.apache.http.client.methods.CloseableHttpResponseâß
-$ (8 
-%7org.apache.http.HttpEntity"Dorg.apache.http.HttpResponse#getEntity()Lorg/apache/http/HttpEntity;*^
-
-__unknown_file (B
-@
-response4org.apache.http.client.methods.CloseableHttpResponse2getEntity()*
-3*ã
-52 (8ÎË
-2 (I:
-%64org.apache.http.client.methods.CloseableHttpResponse"žorg.apache.http.impl.client.CloseableHttpClient#execute(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/client/methods/CloseableHttpResponse;*W
-
-__unknown_file (;
-9
-client/org.apache.http.impl.client.CloseableHttpClient*O
-
-__unknown_file (3
-1
-request&org.apache.http.client.methods.HttpGet28execute(Lorg/apache/http/client/methods/HttpUriRequest;)*
-4*™
-7 (/’
-
- (/1
-request&org.apache.http.client.methods.HttpGet"__id*J
-
-__unknown_file (.
-,
-%1&org.apache.http.client.methods.HttpGetv
-t
- (
-%3java.util.logging.Logger"__id*B
-
-__unknown_file (&*$
-hw.tqs.http.HttpClient"
-loggerU
-S
- (!
-%4java.util.logging.Level"__id*"
-
-__unknown_file (
-"" 
- (<
-
-%5void"\java.util.logging.Logger#log(Ljava/util/logging/Level;Ljava/lang/String;Ljava/lang/Object;)V*<
-
-__unknown_file ( 
-
-%3java.util.logging.Logger*;
-
-__unknown_file (
-
-%4java.util.logging.Level*1
-
-__unknown_file (
-[ HTTP ] GET {0} *5
-
-__unknown_file (
-
-urljava.lang.String2Blog(Ljava/util/logging/Level;Ljava/lang/String;Ljava/lang/Object;)*
-5*ù
-8 (E£
- 
- (E9
-client/org.apache.http.impl.client.CloseableHttpClient"__id*S
-
-__unknown_file (7
-5
-%0/org.apache.http.impl.client.CloseableHttpClientb`
-" (),
-%1&org.apache.http.client.methods.HttpGet"&org.apache.http.client.methods.HttpGetÚ
-×
- (.
-%2"Borg.apache.http.client.methods.HttpGet#<init>(Ljava/lang/String;)V*J
-
-__unknown_file (.
-,
-%1&org.apache.http.client.methods.HttpGet*5
-
-__unknown_file (
-
-urljava.lang.String*
-7*Œ
-9* (5÷
-ô
-* (E5
-%0/org.apache.http.impl.client.CloseableHttpClient"horg.apache.http.impl.client.HttpClients#createDefault()Lorg/apache/http/impl/client/CloseableHttpClient;*G
-
-__unknown_file (+")
-'org.apache.http.impl.client.HttpClients*
-8*5
-1" "("&
-" "(
-
-respjava.lang.String:#
- (&
-urljava.lang.StringB
-hw.tqs.http.HttpClientH

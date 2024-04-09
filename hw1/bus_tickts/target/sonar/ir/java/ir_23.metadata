@@ -1,5 +1,0 @@
-hw.tqs.model.MarkedTrip#addSeat(Ljava/lang/String;)V
-java.util.ArrayList#<init>()V
-java.util.ArrayList#instance-init#
-==
-add java.util.List#add(Ljava/lang/Object;)Z

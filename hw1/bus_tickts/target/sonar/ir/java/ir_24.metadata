@@ -1,3 +1,0 @@
-hw.tqs.model.MarkedTrip#removeSeat(Ljava/lang/String;)V
-==
-remove java.util.List#remove(Ljava/lang/Object;)Z

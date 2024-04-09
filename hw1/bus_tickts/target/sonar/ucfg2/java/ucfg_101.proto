@@ -1,347 +1,0 @@
-
-Zhw.tqs.services.ExchangeRateService#getExchangeRate(Ljava/lang/String;Ljava/lang/String;)Dj
-`/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/services/ExchangeRateService.java (!"3*ó
-2' '(]
-[
-' '(%
-%9org.apache.logging.log4j.Logger"__id*"
-
-__unknown_file (
-""
-}
-' '(7
-%10java.lang.String"__concat*
-' '((
-Cache hit for *.
-'+ '(7"
- 
-baseCurrencyjava.lang.Stringl
-j
-' '(@
-%11java.lang.String"__concat*%
-' '(7
-
-%10java.lang.String*
-': '(@
- to ‰
-†
-' '(Q
-%12java.lang.String"__concat*%
-' '(@
-
-%11java.lang.String*0
-'C '(Q$
-"
-targetCurrencyjava.lang.String~
-|
-' '(l
-%13java.lang.String"__concat*%
-' '(Q
-
-%12java.lang.String*&
-'T '(l
- exchange rate value: ‡
-„
-' '({
-%14java.lang.String"__concat*%
-' '(l
-
-%13java.lang.String*.
-'o '({"
- 
-exchangeRatejava.lang.Doubleëè
-' '(|
-%15void"9org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V*C
-
-__unknown_file ('
-%
-%9org.apache.logging.log4j.Logger*5
-
-__unknown_file (
-
-%14java.lang.String2info(Ljava/lang/String;)"
-( (( 
-""*‚
-3   (&‘
-Ž
-   (7
-%0java.lang.String"__concat*.
-   (&"
- 
-baseCurrencyjava.lang.String*0
- )  (7$
-"
-targetCurrencyjava.lang.Stringf
-d
-   (8
-cacheKeyjava.lang.String"__id*4
-
-__unknown_file (
-
-%0java.lang.String]
-[
-" "(%
-%1org.apache.logging.log4j.Logger"__id*"
-
-__unknown_file (
-""Œ
-‰
-" "(@
-%2java.lang.String"__concat*+
-" "(1
-Getting exchange rate from *.
-"4 "(@"
- 
-baseCurrencyjava.lang.Stringj
-h
-" "(I
-%3java.lang.String"__concat*$
-" "(@
-
-%2java.lang.String*
-"C "(I
- to ‡
-„
-" "(Z
-%4java.lang.String"__concat*$
-" "(I
-
-%3java.lang.String*0
-"L "(Z$
-"
-targetCurrencyjava.lang.Stringéæ
-" "([
-
-%5void"9org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V*C
-
-__unknown_file ('
-%
-%1org.apache.logging.log4j.Logger*4
-
-__unknown_file (
-
-%4java.lang.String2info(Ljava/lang/String;)|
-z
-$ $(#
-%6hw.tqs.cache.Cache"__id*N
-
-__unknown_file (2*0%
-#hw.tqs.services.ExchangeRateService"
-cache‚ÿ
-$ $(:
-%7java.lang.Double"Ehw.tqs.cache.Cache#getFromCache(Ljava/lang/String;)Ljava/lang/Double;*6
-
-__unknown_file (
-
-%6hw.tqs.cache.Cache*:
-
-__unknown_file (
-
-cacheKeyjava.lang.String2 getFromCache(Ljava/lang/String;)j
-h
-$ $(; 
-exchangeRatejava.lang.Double"__id*4
-
-__unknown_file (
-
-%7java.lang.Double¯
-¬
-& &( 
-%8boolean"	__compare*"
-
-__unknown_file (
-!=*>
-
-__unknown_file ("
- 
-exchangeRatejava.lang.Double*"
-
-__unknown_file (
-""*
-2
-1*è
-1* *(^
-\
-* *(&
-%16org.apache.logging.log4j.Logger"__id*"
-
-__unknown_file (
-""€
-~
-* *(8
-%17java.lang.String"__concat*
-* *()
-Cache miss for *.
-*, *(8"
- 
-baseCurrencyjava.lang.Stringl
-j
-* *(A
-%18java.lang.String"__concat*%
-* *(8
-
-%17java.lang.String*
-*; *(A
- to ‰
-†
-* *(R
-%19java.lang.String"__concat*%
-* *(A
-
-%18java.lang.String*0
-*D *(R$
-"
-targetCurrencyjava.lang.String‡
-„
-* *(u
-%20java.lang.String"__concat*%
-* *(R
-
-%19java.lang.String*.
-*U *(u" 
- exchange rate. Calling API...ìé
-* *(v
-%21void"9org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V*D
-
-__unknown_file ((
-&
-%16org.apache.logging.log4j.Logger*5
-
-__unknown_file (
-
-%20java.lang.String2info(Ljava/lang/String;)Ò
-Ï
-+ +(@
-%22java.lang.Double"chw.tqs.services.ExchangeRateService#callApi(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Double;*C
-
-__unknown_file ('%
-#hw.tqs.services.ExchangeRateService*>
-
-__unknown_file ("
- 
-baseCurrencyjava.lang.String*@
-
-__unknown_file ($
-"
-targetCurrencyjava.lang.Stringk
-i
-+ +(@ 
-exchangeRatejava.lang.Double"__id*5
-
-__unknown_file (
-
-%22java.lang.Double}
-{
-, ,(
-%23hw.tqs.cache.Cache"__id*N
-
-__unknown_file (2*0%
-#hw.tqs.services.ExchangeRateService"
-cacheÇÄ
-, ,(4
-%24void"Dhw.tqs.cache.Cache#addToCache(Ljava/lang/String;Ljava/lang/Double;)V*7
-
-__unknown_file (
-
-%23hw.tqs.cache.Cache*:
-
-__unknown_file (
-
-cacheKeyjava.lang.String*>
-
-__unknown_file ("
- 
-exchangeRatejava.lang.Double20addToCache(Ljava/lang/String;Ljava/lang/Double;)}
-{
-- -(
-%25hw.tqs.cache.Cache"__id*N
-
-__unknown_file (2*0%
-#hw.tqs.services.ExchangeRateService"
-cache‰†
-- -(.
-%26void"3hw.tqs.cache.Cache#cacheTimer(Ljava/lang/String;I)V*7
-
-__unknown_file (
-
-%25hw.tqs.cache.Cache*:
-
-__unknown_file (
-
-cacheKeyjava.lang.String*"
-
-__unknown_file (2 ÷62cacheTimer(Ljava/lang/String;I)^
-\
-/ /(&
-%27org.apache.logging.log4j.Logger"__id*"
-
-__unknown_file (
-""…
-‚
-/ /(<
-%28java.lang.String"__concat*#
-/ /(-
-Cache updated with *.
-/0 /(<"
- 
-baseCurrencyjava.lang.Stringl
-j
-/ /(E
-%29java.lang.String"__concat*%
-/ /(<
-
-%28java.lang.String*
-/? /(E
- to ‰
-†
-/ /(V
-%30java.lang.String"__concat*%
-/ /(E
-
-%29java.lang.String*0
-/H /(V$
-"
-targetCurrencyjava.lang.String~
-|
-/ /(q
-%31java.lang.String"__concat*%
-/ /(V
-
-%30java.lang.String*&
-/Y /(q
- exchange rate value: ‰
-†
-	/ /(€
-%32java.lang.String"__concat*%
-/ /(q
-
-%31java.lang.String*/
-	/t /(€"
- 
-exchangeRatejava.lang.Double{
-y
-	/ /(”
-%33java.lang.String"__concat*&
-	/ /(€
-
-%32java.lang.String*!
-
-/ƒ /(”
- for 15 minutesíê
-	/ /(•
-%34void"9org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V*D
-
-__unknown_file ((
-&
-%27org.apache.logging.log4j.Logger*5
-
-__unknown_file (
-
-%33java.lang.String2info(Ljava/lang/String;)"
-1 1( 
-"":,
-" (6 
-baseCurrencyjava.lang.String:.
-7 (L"
-targetCurrencyjava.lang.StringB'%
-#hw.tqs.services.ExchangeRateServiceHX

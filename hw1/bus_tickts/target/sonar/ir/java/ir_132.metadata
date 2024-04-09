@@ -1,3 +1,0 @@
-hw.tqs.services.MarkedTripService#getMarkedTripById(Ljava/lang/Long;)Lhw/tqs/model/MarkedTrip;
-==
-findById hw.tqs.repository.MarkedTripRepository#findById(Ljava/lang/Long;)Lhw/tqs/model/MarkedTrip;

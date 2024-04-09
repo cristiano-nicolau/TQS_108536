@@ -1,7 +1,0 @@
-hw.tqs.controller.TripController#getTripsByOriginAndDestination(Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
-org.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatusCode;)V
-org.springframework.http.ResponseEntity#instance-init#
-==
-info org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V
-getTripsByOriginAndDestination hw.tqs.services.TripService#getTripsByOriginAndDestination(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
-isEmpty java.util.List#isEmpty()Z

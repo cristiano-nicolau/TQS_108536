@@ -1,3 +1,0 @@
-hw.tqs.services.MarkedTripService#getMarkedTrips()Ljava/util/List;
-==
-findAll org.springframework.data.repository.ListCrudRepository#findAll()Ljava/util/List;

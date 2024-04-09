@@ -18,7 +18,7 @@ import hw.tqs.model.Trip;
 import hw.tqs.repository.TripRepository;
 
 @SpringBootTest
-public class DataInitializerTest {
+class DataInitializerTest {
 
     @Mock
     private TripRepository tripRepository;

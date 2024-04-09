@@ -1,15 +1,0 @@
-
-9hw.tqs.model.Trip#getDepartureTime()Ljava/time/LocalTime;X
-N/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/model/Trip.java] ](%"1*«
-1^ ^(s
-q
-^ ^(
-%0java.time.LocalTime"__id*D
-
-__unknown_file ((*&
-hw.tqs.model.Trip"
-departureTime"'
-^ ^(
-
-%0java.time.LocalTimeB
-hw.tqs.model.TripH

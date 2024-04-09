@@ -1,7 +1,0 @@
-hw.tqs.controller.MarkedTripController#getMarkedTripsByTripID(Ljava/lang/Integer;)Lorg/springframework/http/ResponseEntity;
-org.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatusCode;)V
-org.springframework.http.ResponseEntity#instance-init#
-==
-info org.apache.logging.log4j.Logger#info(Ljava/lang/String;)V
-isEmpty java.util.List#isEmpty()Z
-getMarkedTripsByTripID hw.tqs.services.MarkedTripService#getMarkedTripsByTripID(Ljava/lang/Integer;)Ljava/util/List;

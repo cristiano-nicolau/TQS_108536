@@ -1,6 +1,0 @@
-hw.tqs.cache.Cache#cacheTimer(Ljava/lang/String;I)V
-java.util.Timer#instance-init#
-java.util.Timer#<init>()V
-==
-info org.apache.logging.log4j.Logger#info(Ljava/lang/String;Ljava/lang/Object;)V
-schedule java.util.Timer#schedule(Ljava/util/TimerTask;J)V

@@ -1,26 +1,0 @@
-
-5hw.tqs.model.Trip#isSeatOccupied(Ljava/lang/String;)ZX
-N/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/model/Trip.java= =(!"1*è
-1> >(n
-l
-> >(!
-%0java.util.List"__id*D
-
-__unknown_file ((*&
-hw.tqs.model.Trip"
-occupiedSeatsÔÑ
-> >(0
-%1boolean",java.util.List#contains(Ljava/lang/Object;)Z*2
-
-__unknown_file (
-
-%0java.util.List*6
-
-__unknown_file (
-
-seatjava.lang.String2contains(Ljava/lang/Object;)"
-> >(1
-"":$
-=" =(-
-seatjava.lang.StringB
-hw.tqs.model.TripHX

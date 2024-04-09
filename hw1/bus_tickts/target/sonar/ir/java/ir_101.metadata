@@ -1,4 +1,0 @@
-hw.tqs.services.TripService#getTripById(Ljava/lang/Integer;)Lhw/tqs/model/Trip;
-java.util.Optional#orElse(Ljava/lang/Object;)Ljava/lang/Object;
-==
-findById org.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;

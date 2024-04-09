@@ -1,3 +1,0 @@
-hw.tqs.controller.ExchangeController#getExchangeRate(Ljava/lang/String;Ljava/lang/String;)D
-==
-getExchangeRate hw.tqs.services.ExchangeRateService#getExchangeRate(Ljava/lang/String;Ljava/lang/String;)D

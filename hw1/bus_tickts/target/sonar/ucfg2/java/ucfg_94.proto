@@ -1,27 +1,0 @@
-
-Ghw.tqs.services.TripService#saveTrips(Ljava/util/List;)Ljava/util/List;b
-X/home/cristiano/TQS_108536/hw1/bus_tickts/src/main/java/hw/tqs/services/TripService.java* *("1*è
-1+ +(Œ
-‰
-+ +(&
-%0 hw.tqs.repository.TripRepository"__id*O
-
-__unknown_file (3*1
-hw.tqs.services.TripService"
-tripRepository¥¢
-+ +(,
-%1java.util.List"dorg.springframework.data.repository.ListCrudRepository#saveAll(Ljava/lang/Iterable;)Ljava/util/List;*D
-
-__unknown_file ((
-&
-%0 hw.tqs.repository.TripRepository*5
-
-__unknown_file (
-
-tripsjava.util.List2saveAll(Ljava/lang/Iterable;)""
-+ +(-
-
-%1java.util.List:#
-*  *(0
-tripsjava.util.ListB
-hw.tqs.services.TripServiceH
