@@ -21,13 +21,27 @@ public class HomePage {
         findElementById("departureOneWay").selectByVisibleText(departure);
     }
 
+    public String getSelectedDeparture() {
+        Select select = findElementById("departureOneWay");
+        return select.getFirstSelectedOption().getText();
+    }
+
     public void selectArrival(String arrival) {
         findElementById("arrivalOneWay").selectByVisibleText(arrival);
+    }
+
+    public String getSelectedArrival() {
+        Select select = findElementById("arrivalOneWay");
+        return select.getFirstSelectedOption().getText();
     }
 
     public void selectDepartureDate(String date) {
         driver.findElement(By.id("departureDateOneWay")).click();
         driver.findElement(By.id("departureDateOneWay")).sendKeys(date);
+    }
+
+    public String getSelectedDepartureDate() {
+        return driver.findElement(By.id("departureDateOneWay")).getAttribute("value");
     }
 
     public void clickOneWayButton() {

@@ -1,11 +1,11 @@
 hw/tqs/repositoryTest/TripRepositoryTest.class
+hw/tqs/serviceTest/ExchangeRateServiceTest.class
+hw/tqs/serviceTest/MarkedTripServiceTest.class
+hw/tqs/controller/ExchangeRateControllerTest.class
+hw/tqs/cacheTest/CacheTest.class
 hw/tqs/repositoryTest/MarkedTripRepositoryTest.class
 hw/tqs/controller/MarkedTripControllerTest.class
 hw/tqs/serviceTest/TripServiceTest.class
 hw/tqs/controller/TripControllerTest.class
-hw/tqs/serviceTest/ExchangeRateServiceTest.class
-hw/tqs/serviceTest/MarkedTripServiceTest.class
 hw/tqs/connection/ExternalApiConnectionTest.class
-hw/tqs/controller/ExchangeRateControllerTest.class
 hw/tqs/data/DataInitializerTest.class
-hw/tqs/cacheTest/CacheTest.class

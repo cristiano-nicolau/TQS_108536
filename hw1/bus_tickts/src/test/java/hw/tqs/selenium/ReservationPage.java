@@ -1,6 +1,8 @@
 package hw.tqs.selenium;
 
 
+import java.util.function.IntPredicate;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -59,5 +61,37 @@ public class ReservationPage {
 
     private WebElement findElementByCssSelector(String selector) {
         return driver.findElement(By.cssSelector(selector));
+    }
+
+    public String getPassengerName() {
+        return findElementByName("name").getAttribute("value");       
+    }
+
+    public String getPassengerEmail() {
+        return findElementByName("email").getAttribute("value");
+    }
+
+    public String getPassengerPhone() {
+        return findElementByName("phone").getAttribute("value");
+    }
+
+    public String getPassengerNif() {
+        return findElementByName("nif").getAttribute("value");
+    }
+
+    public String getPassengerAddress() {
+        return findElementByName("address").getAttribute("value");
+    }
+
+    public String getPassengerCity() {
+        return findElementByName("city").getAttribute("value");
+    }
+
+    public String getPassengerZip() {
+        return findElementByName("zip").getAttribute("value");
+    }
+
+    public String getPassengerCardNumber() {
+        return findElementByName("cardNumber").getAttribute("value");
     }
 }
